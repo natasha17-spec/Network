@@ -28,6 +28,19 @@
                             {title: 'Света'}
                         ]
         };
+export let addPost = (postMessage) =>{
+
+let newPosts = {
+    id: 5,
+    message: postMessage,
+    likesCount: 0
+    };
+    state.profilePage.posts.push(newPosts);
+};
+
+
+
+
 
         export default state
 

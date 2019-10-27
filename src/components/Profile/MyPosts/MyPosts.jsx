@@ -5,7 +5,16 @@ import Posts from "./Posts/Posts";
 const MyPosts = (props) => {
 
     let postsElements =
-        props.posts.map(post => <Posts message={post.message} likesCount = {post.likesCount}/>)
+        props.posts.map(post => <Posts message={post.message} likesCount = {post.likesCount}/>);
+
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+      props.addPost(text);
+    };
+
+
     return (
         <div className={s.myPosts}>
             <div>
