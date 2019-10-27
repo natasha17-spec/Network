@@ -1,0 +1,14 @@
+.allFriends {
+
+
+}
+.friends {
+    color: aqua;
+   flex-wrap: wrap;
+
+}
+.fr {
+    color: red;
+margin: 50px  0px  20px  0px;
+    font-size:20px;
+}
