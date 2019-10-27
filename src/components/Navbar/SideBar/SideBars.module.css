@@ -1,11 +1,7 @@
-.allFriends {
 
-
-}
 .friends {
     color: aqua;
    flex-wrap: wrap;
-
 }
 .fr {
     color: red;
