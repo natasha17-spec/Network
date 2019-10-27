@@ -1,5 +1,5 @@
 import React from 'react';
-import p from './News.module.css'
+
 
 const News = (props) => {
     return (
