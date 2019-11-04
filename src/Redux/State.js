@@ -32,11 +32,11 @@ let state = {
                             {title: 'Света'}
                         ]
         };
-window.state = state;
-export let addPost = (postMessage) =>{
+
+export let addPost = () =>{
 let newPosts = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 0
     };
     state.profilePage.posts.push(newPosts);
