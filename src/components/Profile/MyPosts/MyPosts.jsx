@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './MyPosts.module.css'
 import Posts from "./Posts/Posts";
-
+debugger
 const MyPosts = (props) => {
+
     let postsElements =
         props.posts.map(post => <Posts
             message={post.message}
@@ -12,11 +13,11 @@ const MyPosts = (props) => {
 
     let addPost = () => {
          props.addPost();
-        props.apdateNewPostText('');
     };
+
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.apdateNewPostText(text);
+        props.updateNewPostText(text);
     };
 
     return (
