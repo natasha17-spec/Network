@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 
 
 const SideBars = (props) => {
-
+debugger;
     let sideBar = props.state.map(el => <SideBar title={el.title} />);
     return (
 

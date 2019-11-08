@@ -11,6 +11,7 @@ import Dialogs from "./components/Navbar/Dialogs/Dialogs";
 
 
 
+
 const App = (props) => {
 debugger
     return (
@@ -23,9 +24,7 @@ debugger
                     />}/>
                     <Route path='/profile' render={() => <Profile
                         profilePage={props.state.profilePage}
-                        addPost={props.addPost}
-                        updateNewPostText={props.updateNewPostText}
-                    />}/>
+                        dispatch={props.dispatch} />}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' c render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
