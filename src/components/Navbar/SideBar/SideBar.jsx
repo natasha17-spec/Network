@@ -6,6 +6,7 @@ const SideBar = (props) => {
 
 
     return (
+
         <div>
             <div className={s.friends}>
                     <img

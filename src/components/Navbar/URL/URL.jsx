@@ -5,7 +5,7 @@ import SideBars from "../SideBar/sideBars";
 
 
 const URL = (props) => {
-    return(
+    return (
         <nav className={s.nav}>
             <div className={`${s.item} ${s.active}`}>
                 <NavLink to="/profile" activeClassName={s.activeLink}> Profile</NavLink>
@@ -21,7 +21,7 @@ const URL = (props) => {
             </div>
             <div className={s.item}>
                 <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
-                <SideBars state={props.state}/>
+                <SideBars state={props.state.navBar}/>
             </div>
 
         </nav>

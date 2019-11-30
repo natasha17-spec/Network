@@ -13,11 +13,11 @@ import Dialogs from "./components/Navbar/Dialogs/Dialogs";
 
 
 const App = (props) => {
-debugger
+
     return (
             <div className='app-wrapper'>
                 <Header/>
-                <URL state={props.state.navBar}/>
+                <URL state={props.state}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs' render={() => <Dialogs store={props.store}
                     />}/>
