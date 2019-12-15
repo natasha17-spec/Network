@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './URL.module.css';
 import {NavLink} from "react-router-dom";
-import SideBars from "../SideBar/sideBars";
+
 
 
 const URL = (props) => {
-    return (
+
+        return (
         <nav className={s.nav}>
             <div className={`${s.item} ${s.active}`}>
                 <NavLink to="/profile" activeClassName={s.activeLink}> Profile</NavLink>
@@ -21,10 +22,9 @@ const URL = (props) => {
             </div>
             <div className={s.item}>
                 <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
-                <SideBars state={props.state.navBar}/>
             </div>
-
         </nav>
-    );
+
+)
 };
 export default URL;

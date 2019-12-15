@@ -1,5 +1,4 @@
 import React from 'react';
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
@@ -9,7 +8,7 @@ debugger;
     return(
         <div>
            <ProfileInfo/>
-            <MyPostsContainer store={props.store}
+            <MyPostsContainer
             />
         </div>
     );
