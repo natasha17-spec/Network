@@ -1,20 +1,17 @@
-
 .app-wrapper {
   display: grid;
   width: 1400px;
   margin: 0 auto;
-
   grid-template-areas: "h h" "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  /*grid-gap:10px;*/
 }
 
 .app-wrapper-content {
   background-color: #a4c1e9;
   grid-area: c;
-
 }
+
 .statusUsers{
 border: #265171 1px solid;
   background-color: #fafafa;
@@ -80,7 +77,6 @@ font-size: 14px;
   outline: none;
   display: inline-block;
   color: white;
-
   border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -89,7 +85,4 @@ font-size: 14px;
   background-size: 200% auto;
   box-shadow: 0 0 20px rgba(0,0,0,.1);
   transition: .5s;
-}
-.photoUsers {
-
 }
