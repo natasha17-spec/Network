@@ -15,8 +15,81 @@
   grid-area: c;
 
 }
+.statusUsers{
+border: #265171 1px solid;
+  background-color: #fafafa;
+  border-radius: 10px;
+  display: flex;
+  justify-content:end;
+  width: 30%;
+  height: 100px;
+  margin: 5px;
+}
+.allUsers {
+  display: flex;
+}
+.usersContainer{
+margin: 20px 0px 10px 50px;
+}
 
+.nickUsers{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fullname{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:150px;
+}
+.fullname div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:150px;
+  font-family: "Comic Sans MS" , sans-serif;
+}
+.country{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 170px;
+}
+ .country div{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 170px;
+   font-size: 10px;
+   color: #575758;
+   font-family: "Century Gothic", sans-serif;
+}
+.photo {
+border-radius: 50%;
+}
+.full_status {
+font-size: 14px;
+  margin: 5px;
+  display: flex;
 
+}
+.buttonFollow{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  color: white;
 
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  transition: .5s;
+}
+.photoUsers {
 
-
+}

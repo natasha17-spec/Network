@@ -9,31 +9,31 @@ let inicialState = {
     newPostText: 'it-kamasutra.com'
 };
 
- const profileReducer = (state = inicialState, action) =>{
-     switch (action.type) {
-         case ADD_POST: {
-             let newPosts = {
-                 id: 5,
-                 message: state.newPostText,
-                 likesCount: 0
-             };
+const profileReducer = (state = inicialState, action) => {
+    switch (action.type) {
+        case ADD_POST: {
+            let newPosts = {
+                id: 5,
+                message: state.newPostText,
+                likesCount: 0
+            };
 
 
-             let stateCopy = {...state};
-             stateCopy.posts = [...state.posts];
-             stateCopy.posts.push(newPosts);
-             stateCopy.newPostText = '';
-             return stateCopy;
-         }
-         case UPDATE_NEW_POST_TEXT: {
-             let stateCopy = {...state};
-             stateCopy.newPostText = action.newText;
-
-             return stateCopy;
-         }
-         default:
-             return state
-     }
+            return {
+                ...state,
+                posts: [...state.posts, newPosts],
+                newPostText: ''
+            };
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText
+            };
+        }
+        default:
+            return state
+    }
 };
 export  const addPostActionCreator =() =>  ({type: ADD_POST});
 export  const updateNewPostActionCreator =(text) =>
