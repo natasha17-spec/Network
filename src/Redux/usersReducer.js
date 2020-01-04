@@ -1,42 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE ='SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT ='SET_TOTAL_USERS_COUNT';
 
 let inicialState = {
-    users: [
-        // {
-        //     id: 1,
-        //     photoUrl: 'https://st.depositphotos.com/1898481/3917/i/950/depositphotos_39179105-stock-photo-silhouette.jpg',
-        //     followed: false,
-        //     fullname: 'Natali Gerasimovich',
-        //     status: 'I am a boss',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 2,
-        //     photoUrl: 'https://st.depositphotos.com/1898481/3917/i/950/depositphotos_39179105-stock-photo-silhouette.jpg',
-        //     followed: true,
-        //     fullname: 'Ivan Petrov',
-        //     status: 'I am a doctor',
-        //     location: {city: 'Moskov', country: 'Russia'}
-        // },
-        // {
-        //     id: 3,
-        //     photoUrl: 'https://st.depositphotos.com/1898481/3917/i/950/depositphotos_39179105-stock-photo-silhouette.jpg',
-        //     followed: true,
-        //     fullname: 'Dmitiy Sidorov',
-        //     status: 'I am a devoloper',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 4,
-        //     photoUrl: 'https://st.depositphotos.com/1898481/3917/i/950/depositphotos_39179105-stock-photo-silhouette.jpg',
-        //     followed: false,
-        //     fullname: 'Katya Marinka',
-        //     status: 'I am a teacher',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // }
-    ],
+    users: [],
+    pageSize:5,
+    totalUsersCount:28,
+    currentPage:1
 };
 
 const usersReducer = (state = inicialState, action) => {
@@ -62,7 +34,15 @@ const usersReducer = (state = inicialState, action) => {
                 })
             };
         case SET_USERS:
-            return {...state, users: [...state.users, ...action.users]};
+            return {...state, users: action.users};
+
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage};
+
+        case SET_TOTAL_USERS_COUNT:
+
+            return {...state, totalUsersCount: action.count};
+
         default:
             return state
     }
@@ -72,5 +52,6 @@ const usersReducer = (state = inicialState, action) => {
 export const followAC = (UserId) => ({type: FOLLOW, UserId});
 export const unfollowAC = (UserId) => ({type: UNFOLLOW, UserId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
-
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setUsersTotalCountAC = (totalUsersCount)=>({type:SET_TOTAL_USERS_COUNT,count:totalUsersCount});
 export default usersReducer;

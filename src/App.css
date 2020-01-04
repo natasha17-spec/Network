@@ -18,7 +18,7 @@ border: #265171 1px solid;
   border-radius: 10px;
   display: flex;
   justify-content:end;
-  width: 30%;
+  width: 350px;
   height: 100px;
   margin: 5px;
 }
@@ -85,4 +85,7 @@ font-size: 14px;
   background-size: 200% auto;
   box-shadow: 0 0 20px rgba(0,0,0,.1);
   transition: .5s;
+}
+.selectedPage{
+  font-weight: bold;
 }
