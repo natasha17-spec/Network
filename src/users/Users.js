@@ -9,7 +9,7 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    debugger;
+
     return <div className='usersContainer'>
             <div>
                 {pages.map(p => {
@@ -19,7 +19,6 @@ let Users = (props) => {
                                  }}
                     >{p}_</span>
                 })}
-
             </div>
 
             {
