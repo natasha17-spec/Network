@@ -1,3 +1,42 @@
-.ava {
+.users_ava {
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px 2px #265171;
     margin: 10px;
+    width: 250px;
+    height: 250px;
+}
+
+.data_users {
+display: flex;
+height: 300px;
+border-color: #265171;
+}
+.usersContainer {
+display: flex;
+height: 250px;
+    width: auto;
+    border-color: #265171;
+}
+
+.data {
+    margin: 10px;
+    background-color: azure;
+    border-radius: 15px;
+    height: 250px;
+}
+.dataContainer {
+    border-radius: 15px;
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.fullname {
+   width: 70%;
+}
+
+.name {
+    margin-right: 20px;
 }

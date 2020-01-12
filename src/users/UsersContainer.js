@@ -54,35 +54,10 @@ let mapStateToProps = (state)=> {
         pageSize: state.userPage.pageSize,
         totalUsersCount: state.userPage.totalUsersCount,
         currentPage: state.userPage.currentPage,
-        isFetching: state.userPage.isFetching
+        isFetching: state.userPage.isFetching,
+
     };
 
-// let mapDispatchToProps = (dispatch)=>{
-//   return{
-//     follow: (userId)=> {
-//
-//         dispatch(followAC(userId));
-//     },
-//    unfollow: (userId)=> {
-//
-//        dispatch(unfollowAC(userId));
-//   },
-//    setUsers:(users)=> {
-//           dispatch(setUsersAC(users));
-//
-//       },
-//       setCurrentPage:(currentPage)=>{
-//
-//               dispatch(setCurrentPageAC(currentPage))
-//       },
-//       setTotalUsersCount:(totalCount)=>{
-//
-//         dispatch(setUsersTotalCountAC(totalCount))
-//       },
-//       toogleIsFetching:(isFetching)=>{
-//
-//         dispatch(toogleIsFetchingAC(isFetching))
-//       },
 };
 
 export default connect (mapStateToProps,
