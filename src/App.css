@@ -86,6 +86,20 @@ font-size: 14px;
   box-shadow: 0 0 20px rgba(0,0,0,.1);
   transition: .5s;
 }
+.buttonUnFollow{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  color: #ff4430;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  transition: .5s;
+}
 .selectedPage{
   font-weight: bold;
 }

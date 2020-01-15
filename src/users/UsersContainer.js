@@ -10,7 +10,9 @@ class UsersContainer extends React.Component {
     componentDidMount = () => {
 this.props.toogleIsFetching(true);
         axios.get(`https:social-network.samuraijs.com/api/1.0/users?page=
-         ${this.props.currentPage}&count=${this.props.pageSize}`)
+         ${this.props.currentPage}&count=${this.props.pageSize}`,{
+            withCredentials: true
+        })
             .then(response => {
                 this.props.toogleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -22,7 +24,9 @@ this.props.toogleIsFetching(true);
                this.props.setCurrentPage(pageNumber);
         this.props.toogleIsFetching(true);
         axios.get(`https:social-network.samuraijs.com/api/1.0/users?page=
-         ${pageNumber}&count=${this.props.pageSize}`)
+         ${pageNumber}&count=${this.props.pageSize}`,{
+            withCredentials: true
+        })
             .then(response => {
                 this.props.toogleIsFetching(false);
                 this.props.setUsers(response.data.items)});
