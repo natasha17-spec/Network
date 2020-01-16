@@ -1,3 +1,5 @@
+import {usersAPI} from "../API/Api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -59,11 +61,46 @@ const usersReducer = (state = inicialState, action) => {
 };
 
 
-export const follow = (UserId) => ({type: FOLLOW, UserId});
-export const unfollow = (UserId) => ({type: UNFOLLOW, UserId});
+export const followSuccsess = (UserId) => ({type: FOLLOW, UserId});
+export const unfollowSuccsess = (UserId) => ({type: UNFOLLOW, UserId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCount = (totalUsersCount)=>({type:SET_TOTAL_USERS_COUNT,count:totalUsersCount});
 export const toogleIsFetching = (isFetching)=>({type:TOGGLE_IS_FETCHING,isFetching});
 export const toogleFollowingProgress = (isFetching)=>({type:TOGGLE_IS_FOLLOWING_PROGRESS,isFetching});
 export default usersReducer;
+
+export const getUsers=(currentPage, pageSize)=>{
+  return  (dispatch)=>{
+        dispatch(toogleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toogleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
+    };
+}
+export const follow=(userId)=>{
+    return  (dispatch)=>{
+        dispatch(toogleFollowingProgress(true));
+        usersAPI.follow(userId)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(followSuccsess(userId))
+                }
+                dispatch(toogleFollowingProgress(false))
+            })
+    };
+}
+export const unfollow=(userId)=>{
+    return  (dispatch)=>{
+        dispatch(toogleFollowingProgress(true));
+        usersAPI.unfollow(userId)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(unfollowSuccsess(userId))
+                }
+                dispatch(toogleFollowingProgress(false, userId))
+            })
+    };
+}
