@@ -37,7 +37,7 @@ let Users = (props) => {
 
                                 {u.followed
                                     ? <button disabled={props.followingInProgress} onClick={()=> {
-                                       // props.toogleFollowingProgress(true);
+                                       props.toogleFollowingProgress(true);
                                         usersAPI.unfollow(u.id)
                                             .then(response => {
                                                 if (response.resultCode === 0){
@@ -45,20 +45,20 @@ let Users = (props) => {
                                                 }
                                                 //  props.toogleFollowingProgress(false)
 
-                                            //props.toogleFollowingProgress(false)
+
                                         })}}
                                             className='buttonUnFollow'>UnFollow</button>
 
 
                                     : <button disabled={props.followingInProgress} onClick={() => {
-                                       // props.toogleFollowingProgress(true)
+                                       props.toogleFollowingProgress(true)
 
                                         usersAPI.follow(u.id)
                                                 .then(response => {
                                                     if (response.resultCode === 0){
                                                         props.follow(u.id)
                                                     }
-                                                  //  props.toogleFollowingProgress(false)
+                                                   props.toogleFollowingProgress(false)
                                                 })}}
                                         className='buttonFollow'>Follow</button>
                                     }

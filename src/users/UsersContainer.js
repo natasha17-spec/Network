@@ -17,7 +17,6 @@ import {usersAPI} from "../API/Api";
 class UsersContainer extends React.Component {
 
     componentDidMount = () => {
-        debugger
 
 this.props.toogleIsFetching(true);
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
@@ -52,6 +51,8 @@ this.props.toogleIsFetching(true);
                               unfollow={this.props.unfollow}
                               totalUsersCount={this.props.totalUsersCount}
                               isFetching={this.props.isFetching}
+                              followingInProgress={this.props.followingInProgress}
+                              toogleFollowingProgress={this.props.toogleFollowingProgress}
                        />
                    </>
         )
@@ -65,7 +66,8 @@ let mapStateToProps = (state)=> {
         totalUsersCount: state.userPage.totalUsersCount,
         currentPage: state.userPage.currentPage,
         isFetching: state.userPage.isFetching,
-        followingInProgress: state.userPage.followingInProgress,
+        followingInProgress: state.userPage.followingInProgress
+
 
     };
 
