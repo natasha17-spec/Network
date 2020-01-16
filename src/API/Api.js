@@ -29,7 +29,15 @@ export const usersAPI= {
             .then(response=> {
                 return response.data;
             })
-    }
+    },
+    authMe(){
+
+        return instance.get(`auth/me`)
+            .then(response=> {
+                return response.data;
+            })
+    },
+
 };
 
 
