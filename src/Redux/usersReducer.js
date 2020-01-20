@@ -73,13 +73,14 @@ export default usersReducer;
 export const getUsers=(currentPage, pageSize)=>{
   return  (dispatch)=>{
         dispatch(toogleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
             dispatch(toogleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setTotalUsersCount(data.totalCount));
         });
     };
-}
+};
 export const follow=(userId)=>{
     return  (dispatch)=>{
         dispatch(toogleFollowingProgress(true));

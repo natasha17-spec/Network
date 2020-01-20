@@ -37,13 +37,12 @@ export const usersAPI= {
                 return response.data;
             })
     },
-    userId (userId) {
+    profileUserId (userId) {
         return instance.get(`profile/`+ userId)
             .then(response => {
-                this.props.setUserProfile(response.data);
+                return response.data;
             });
     }
-
 };
 
 
