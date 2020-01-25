@@ -8,7 +8,7 @@ import {
     setlookingForAJobDescriptionProfile,
     setlookingForAJobProfile,
 } from "../../Redux/profileReducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 
 
 class ProfileContainer extends React.Component {
@@ -17,11 +17,11 @@ class ProfileContainer extends React.Component {
        if (!userId){
            userId=2;
        }
-
         this.props.getUserProfile(userId)
         }
 
     render() {
+        if(!this.props.isAuth)return <Redirect to={'/login'}/>;
           return(
         <Profile {...this.props} profile={this.props.profile} fullName={this.props.fullName} aboutMe={this.props.aboutMe}
                  lookingForAJob={this.props.lookingForAJob} lookingForAJobDescription={this.props.lookingForAJobDescription}
@@ -34,8 +34,9 @@ class ProfileContainer extends React.Component {
     fullName: state.profilePage.fullName,
     aboutMe:state.profilePage.aboutMe,
     lookingForAJob:state.profilePage.lookingForAJob,
-    lookingForAJobDescription: state.profilePage.lookingForAJobDescription
-});
+    lookingForAJobDescription: state.profilePage.lookingForAJobDescription,
+    isAuth:state.auth.isAuth
+    });
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 export default connect (mapStateToProps,{getUserProfile, setFullnameProfile, setAboutMeProfile, setlookingForAJobProfile,setlookingForAJobDescriptionProfile
