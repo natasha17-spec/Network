@@ -92,7 +92,7 @@ export const follow=(userId)=>{
                 dispatch(toogleFollowingProgress(false))
             })
     };
-}
+};
 export const unfollow=(userId)=>{
     return  (dispatch)=>{
         dispatch(toogleFollowingProgress(true));

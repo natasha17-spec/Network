@@ -31,17 +31,13 @@ export const usersAPI= {
             })
     },
     authMe(){
-
         return instance.get(`auth/me`)
             .then(response=> {
                 return response.data;
             })
     },
-    profileUserId (userId) {
+    getProfile (userId) {
         return instance.get(`profile/`+ userId)
-            .then(response => {
-                return response.data;
-            });
     }
 };
 
