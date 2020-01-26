@@ -10,6 +10,7 @@ import {
 } from "../../Redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
@@ -33,19 +34,25 @@ class ProfileContainer extends React.Component {
     }
 }
 
-    let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+let mapStateToProps = (state) => ({
+    profile: state.profilePage.profile,
+    fullName: state.profilePage.fullName,
+    aboutMe: state.profilePage.aboutMe,
+    lookingForAJob: state.profilePage.lookingForAJob,
+    lookingForAJobDescription: state.profilePage.lookingForAJobDescription,
 
-    let mapStateToProps = (state) => ({
-        profile: state.profilePage.profile,
-        fullName: state.profilePage.fullName,
-        aboutMe: state.profilePage.aboutMe,
-        lookingForAJob: state.profilePage.lookingForAJob,
-        lookingForAJobDescription: state.profilePage.lookingForAJobDescription,
+});
 
-    });
+export default compose(
+        connect(mapStateToProps, {
+            getUserProfile,
+            setFullnameProfile,
+            setAboutMeProfile,
+            setlookingForAJobProfile,
+            setlookingForAJobDescriptionProfile}),
+        withRouter,withAuthRedirect
+    )
+    (ProfileContainer);
 
-    let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-    export default connect(mapStateToProps, {
-        getUserProfile, setFullnameProfile, setAboutMeProfile, setlookingForAJobProfile, setlookingForAJobDescriptionProfile
 
-    })(WithUrlDataContainerComponent);
+
