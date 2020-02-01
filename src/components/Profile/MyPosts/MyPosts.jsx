@@ -14,7 +14,7 @@ const MyPosts = (props) => {
           };
     return (
         <div className={s.myPosts}>
-            <div>
+            <div className={s.postsContainer}>
                 <h3>My Posts</h3>
             </div>
             <div> <textarea ref={newPostElement} value={props.newPostText}
