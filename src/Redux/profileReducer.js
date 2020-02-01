@@ -1,4 +1,4 @@
-import {usersAPI} from "../API/Api";
+import {profileAPI, usersAPI} from "../API/Api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -7,7 +7,7 @@ const FULLNAME_PROFILE ='FULLNAME_PROFILE';
 const ABOUTME_PROFILE ='ABOUTME_PROFILE';
 const LOOKING_FOR_A_JOB ='LOOKING_FOR_A_JOB';
 const LOOKING_FOR_A_JOB_DESCRIPTION ='LOOKING_FOR_A_JOB_DESCRIPTION';
-
+const SET_STATUS='SET_STATUS';
 
 let inicialState = {
     posts: [
@@ -19,7 +19,8 @@ let inicialState = {
     fullName:null,
     aboutMe:null,
     lookingForAJob:null,
-    lookingForAJobDescription:null
+    lookingForAJobDescription:null,
+    status:""
 };
 
 const profileReducer = (state = inicialState, action) => {
@@ -63,6 +64,12 @@ const profileReducer = (state = inicialState, action) => {
 
             return {...state, lookingForAJobDescription: action.lookingForAJobDescription};
         }
+        case SET_STATUS: {
+
+            return {
+                ...state,
+                status: action.status};
+        }
         default:
             return state
     }
@@ -75,12 +82,27 @@ export  const getUserProfile =(userId) => (dispatch) => {
                 dispatch(setUserProfile(response.data));
             });
 };
+export  const getStatus =(userId) => (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                dispatch(
+                    setStatus(response.data));
+            });
+};
+export  const updateStatus =(userId) => (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                dispatch(
+                    setStatus(response.data));
+            });
+};
+export  const setStatus =(status) =>  ({type: SET_STATUS, status});
+
 export  const setFullnameProfile =(fullName) =>  ({type: FULLNAME_PROFILE, fullName});
 export  const setAboutMeProfile =(aboutMe) =>  ({type: ABOUTME_PROFILE, aboutMe});
 export  const setlookingForAJobProfile =(lookingForAJob) =>  ({type: LOOKING_FOR_A_JOB, lookingForAJob});
 export  const setlookingForAJobDescriptionProfile =(lookingForAJobDescription) =>  ({type: LOOKING_FOR_A_JOB_DESCRIPTION, lookingForAJobDescription});
-export  const updateNewPostActionCreator =(text) =>
-    ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export  const updateNewPostActionCreator =(text) =>({type: UPDATE_NEW_POST_TEXT, newText: text});
 
 export default profileReducer;
 
