@@ -65,10 +65,10 @@ const profileReducer = (state = inicialState, action) => {
             return {...state, lookingForAJobDescription: action.lookingForAJobDescription};
         }
         case SET_STATUS: {
-
             return {
                 ...state,
-                status: action.status};
+                status: action.status
+            };
         }
         default:
             return state
@@ -89,15 +89,15 @@ export  const getStatus =(userId) => (dispatch) => {
                     setStatus(response.data));
             });
 };
-export  const updateStatus =(userId) => (dispatch) => {
-        profileAPI.getStatus(userId)
+export  const updateStatus =(status) => (dispatch) => {
+        profileAPI.updateStatus(status)
             .then(response => {
-                dispatch(
-                    setStatus(response.data));
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                }
             });
 };
 export  const setStatus =(status) =>  ({type: SET_STATUS, status});
-
 export  const setFullnameProfile =(fullName) =>  ({type: FULLNAME_PROFILE, fullName});
 export  const setAboutMeProfile =(aboutMe) =>  ({type: ABOUTME_PROFILE, aboutMe});
 export  const setlookingForAJobProfile =(lookingForAJob) =>  ({type: LOOKING_FOR_A_JOB, lookingForAJob});

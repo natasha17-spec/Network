@@ -2,11 +2,13 @@ import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {
+    getStatus,
     getUserProfile,
     setAboutMeProfile,
     setFullnameProfile,
     setlookingForAJobDescriptionProfile,
     setlookingForAJobProfile,
+    updateStatus,
 } from "../../Redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -20,13 +22,17 @@ class ProfileContainer extends React.Component {
             userId = 2;
         }
         this.props.getUserProfile(userId);
-        this.props.profileAPI(userId)
+        this.props.getStatus(userId)
     }
 
     render() {
 
         return (
-            <Profile {...this.props} profile={this.props.profile} fullName={this.props.fullName}
+            <Profile {...this.props}
+                     updateStatus={this.props.updateStatus}
+                     status={this.props.status}
+                     profile={this.props.profile}
+                     fullName={this.props.fullName}
                      aboutMe={this.props.aboutMe}
                      lookingForAJob={this.props.lookingForAJob}
                      lookingForAJobDescription={this.props.lookingForAJobDescription}
@@ -36,6 +42,7 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
+    status:state.profilePage.status,
     profile: state.profilePage.profile,
     fullName: state.profilePage.fullName,
     aboutMe: state.profilePage.aboutMe,
@@ -46,6 +53,8 @@ let mapStateToProps = (state) => ({
 
 export default compose(
         connect(mapStateToProps, {
+            getStatus,
+            updateStatus,
             getUserProfile,
             setFullnameProfile,
             setAboutMeProfile,
