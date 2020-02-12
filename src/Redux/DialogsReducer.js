@@ -16,9 +16,9 @@ let inicialState ={
         {id: 2, message: 'How is your it-kamasutra?'},
         {id: 3, message: 'Where are you?!'},
         {id: 4, message: 'You is cool!'},
-        {id: 5, message: 'You is cool!'},
-    ],
-    newMessageBody: ""
+        {id: 5, message: 'You is cool!'}
+    ]
+    //newMessageBody: ""
 };
  const dialogsReducer = (state = inicialState, action) => {
 
@@ -31,17 +31,19 @@ let inicialState ={
              };
 
          case SEND_MESSAGE:
-             let body = state.newMessageBody;
+             let body = action.newMessageBody;
              return {
                  ...state,
-                 newMessageBody: '',
-                 messagesData: [...state.messagesData,{id: 6, message: body}],
+               //  newMessageBody: '',
+                 messagesData: [...state.messagesData,
+                     {id: 6, message: body}],
                  };
              default:
              return state;
      }
  };
-export  const sendMessageCreator =() =>  ({type: SEND_MESSAGE});
+export  const sendMessageCreator =(newMessageBody) =>
+    ({type: SEND_MESSAGE, newMessageBody});
 export  const updateNewMessageBodyCreator =(body) =>
     ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
 
