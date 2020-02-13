@@ -1,7 +1,7 @@
 import {profileAPI, usersAPI} from "../API/Api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+//const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
 const FULLNAME_PROFILE ='FULLNAME_PROFILE';
 const ABOUTME_PROFILE ='ABOUTME_PROFILE';
@@ -14,7 +14,7 @@ let inicialState = {
         {id: 1, message: 'I am fine!', likesCount: 45},
         {id: 2, message: 'Hey! How are you?', likesCount: 23}
     ],
-    newPostText: 'it-kamasutra.com',
+    //newPostText: 'it-kamasutra.com',
     profile: null,
     fullName:null,
     aboutMe:null,
@@ -28,7 +28,7 @@ const profileReducer = (state = inicialState, action) => {
         case ADD_POST: {
             let newPosts = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostText,//state.newPostText
                 likesCount: 0
             };
 
@@ -38,12 +38,12 @@ const profileReducer = (state = inicialState, action) => {
                 newPostText: ''
             };
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
-            };
-        }
+        // case UPDATE_NEW_POST_TEXT: {
+        //     return {
+        //         ...state,
+        //         newPostText: action.newText
+        //     };
+        // }
         case SET_USERS_PROFILE: {
 
             return {...state, profile: action.profile};
@@ -74,7 +74,7 @@ const profileReducer = (state = inicialState, action) => {
             return state
     }
 };
-export  const addPostActionCreator =() =>  ({type: ADD_POST});
+export  const addPostActionCreator =(newPostText) =>  ({type: ADD_POST,newPostText});
 export  const setUserProfile =(profile) =>  ({type: SET_USERS_PROFILE, profile});
 export  const getUserProfile =(userId) => (dispatch) => {
         usersAPI.getProfile(userId)
@@ -102,7 +102,7 @@ export  const setFullnameProfile =(fullName) =>  ({type: FULLNAME_PROFILE, fullN
 export  const setAboutMeProfile =(aboutMe) =>  ({type: ABOUTME_PROFILE, aboutMe});
 export  const setlookingForAJobProfile =(lookingForAJob) =>  ({type: LOOKING_FOR_A_JOB, lookingForAJob});
 export  const setlookingForAJobDescriptionProfile =(lookingForAJobDescription) =>  ({type: LOOKING_FOR_A_JOB_DESCRIPTION, lookingForAJobDescription});
-export  const updateNewPostActionCreator =(text) =>({type: UPDATE_NEW_POST_TEXT, newText: text});
+//export  const updateNewPostActionCreator =(text) =>({type: UPDATE_NEW_POST_TEXT, newText: text});
 
 export default profileReducer;
 
