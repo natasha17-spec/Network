@@ -1,3 +1,6 @@
+import React from 'react'
+import styles from '../FormsControls/FormsControls.module.css'
+
 const  FormControl = ({input, meta, ...props}) => {
     let {touched, error} = meta;
     let hasError =  touched && error;
