@@ -15,5 +15,9 @@
 .loginBlock a{
     color: #fff6e6;
     text-decoration: none;
-
+}
+.logOut {
+    border-radius:10%;
+    background-color: #a4c1e9;
+    box-shadow: #265171;
 }
