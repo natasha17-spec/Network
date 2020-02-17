@@ -19,16 +19,19 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 2;
+            userId = this.props.autorizedUserId;
+            if (!userId) {
+                this.props.history.push("/login");
+            }
         }
         this.props.getUserProfile(userId);
             this.props.getStatus(userId);
     }
 
     render() {
-
         return (
-            <Profile {...this.props}
+            <Profile
+                    {...this.props}
                      updateStatus={this.props.updateStatus}
                      status={this.props.status}
                      profile={this.props.profile}
@@ -42,6 +45,8 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
+    isAuth:state.auth.isAuth,
+    autorizedUserId:state.auth.id,
     status:state.profilePage.status,
     profile: state.profilePage.profile,
     fullName: state.profilePage.fullName,
@@ -61,8 +66,7 @@ export default compose(
             setlookingForAJobProfile,
             setlookingForAJobDescriptionProfile}),
         withRouter,withAuthRedirect
-    )
-    (ProfileContainer);
+    )(ProfileContainer);
 
 
 

@@ -7,6 +7,22 @@
 .error {
  color: #ff430f;
 }
-
-
+.formSummaryError{
+ border:red 1px solid;
+ padding: 5px;
+ color: #ff1217;
+ width: 150px;
+}
+.formSummaryContainer{
+ display: flex;
+ width: 165px;
+ justify-content: center;
+ text-align: center;
+}
+.formOnButton{
+ display: flex;
+ justify-content: center;
+ width: 165px;
+ margin-top: 8px;
+}
 
