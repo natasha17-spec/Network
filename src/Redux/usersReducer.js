@@ -9,7 +9,7 @@ const TOGGLE_IS_FETCHING ='TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS ='TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let inicialState = {
-    users: [],
+    users: [ ],
     pageSize:15,
     totalUsersCount:28,
     currentPage:1,
@@ -70,10 +70,11 @@ export const toogleIsFetching = (isFetching)=>({type:TOGGLE_IS_FETCHING,isFetchi
 export const toogleFollowingProgress = (isFetching)=>({type:TOGGLE_IS_FOLLOWING_PROGRESS,isFetching});
 export default usersReducer;
 
-export const getUsers=(currentPage, pageSize)=>{
+export const getUsers=(page, pageSize)=>{
   return  (dispatch)=>{
         dispatch(toogleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize)
+        dispatch(setCurrentPage(page));
+        usersAPI.getUsers(page, pageSize)
             .then(data => {
             dispatch(toogleIsFetching(false));
             dispatch(setUsers(data.items));

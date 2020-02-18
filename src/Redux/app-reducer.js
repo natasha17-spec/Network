@@ -15,15 +15,18 @@ const appReducer = (state = inicialState, action) => {
         return state
     }
 };
+export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
-    export const initializedSuccess = () => ({
-        type: INITIALIZED_SUCCESS});
+export const initializeApp = () => (dispatch) => {
+    let promise = dispatch(authMe());
+    debugger
+    //dispatch(somethingelse());
+    //dispatch(somethingelse());
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        });
+}
 
-    export const initializeApp=()=>(dispatch)=>{
-      let promise =  dispatch(authMe());
-        debugger;
-        promise.then(()=>{
-            dispatch(initializedSuccess())
-        })};
 
 export default appReducer;
