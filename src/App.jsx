@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import URL from "./components/Navbar/URL/URL";
 import {Route, withRouter} from "react-router-dom";
@@ -15,15 +15,20 @@ import {compose} from "redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 
-class App extends Component {
+
+class App extends React.Component {
 
     componentDidMount = () => {
         this.props.initializeApp();
     };
     render() {
-        if (!this.props.initialized){
-        return <Preloader/>}
+        if (!this.props.initialized) {
+            return <Preloader/>
+        }
+
+
         return (
+
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <URL state={this.props.state}/>
