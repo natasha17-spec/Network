@@ -28,7 +28,6 @@ class App extends React.Component {
 
 
         return (
-
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <URL state={this.props.state}/>

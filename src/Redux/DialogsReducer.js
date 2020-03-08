@@ -1,5 +1,5 @@
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_MESSAGE_BODY = 'samurai-network/dialogs/UPDATE_NEW_MESSAGE_BODY';
+const SEND_MESSAGE = 'samurai-network/dialogs/SEND_MESSAGE';
 
 let inicialState ={
     dialogsData: [
@@ -18,7 +18,7 @@ let inicialState ={
         {id: 4, message: 'You is cool!'},
         {id: 5, message: 'You is cool!'}
     ]
-    //newMessageBody: ""
+
 };
  const dialogsReducer = (state = inicialState, action) => {
 
@@ -27,7 +27,6 @@ let inicialState ={
              let body = action.newMessageBody;
              return {
                  ...state,
-               //  newMessageBody: '',
                  messagesData: [...state.messagesData,
                      {id: 6, message: body}],
                  };

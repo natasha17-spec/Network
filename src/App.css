@@ -100,9 +100,7 @@ font-size: 14px;
   box-shadow: 0 0 20px rgba(0,0,0,.1);
   transition: .5s;
 }
-.selectedPage{
-  font-weight: bold;
-}
+
 .downloader{
   z-index:4;
   position:absolute ;
