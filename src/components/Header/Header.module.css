@@ -1,8 +1,15 @@
 
 .header {
     background-color: #455c83;
-    grid-area: h;
+    grid-area: header;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-evenly;
+    background-image: url("../../Picture/icon_mario.png");
+    background-repeat: no-repeat;
 }
+
 
 .header img {
     height:70px;

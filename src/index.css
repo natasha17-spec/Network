@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Marck Script', cursive;
+  font-family: 'Oswald', sans-serif;
 }
 
 code {

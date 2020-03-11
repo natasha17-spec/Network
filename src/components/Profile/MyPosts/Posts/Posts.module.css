@@ -1,12 +1,64 @@
 .item {
     color: rgba(1, 1, 1, 0.99);
-    margin:5px 0px  5px 0px;
+    margin:5px 0px  0px 0px;
 }
 .item img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 30px;
 }
 .allPost {
-    margin: 20px 0px 0px 0px;
+    margin: 50px 0px 60px 0px;
+}
+.message {
+    border: 1px solid;
+    border-radius: 0px 20px 20px 20px;
+    width: 50%;
+    min-height: 90px;
+    padding: 10px 0px 0px 10px;
+    margin-left: 10px;
+    background-color: azure;
+}
+.post_likes{
+
+}
+button {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 3px 9px;
+    margin: 2px 7px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #F137A6 inset, 0 0 0 0 #F137A6;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #040000;
+    transition: .15s ease-in-out;
+}
+button:hover {
+    box-shadow: 0 0 10px 0 #4454f9 inset, 0 0 10px 4px #1a009b;
+    color: #F137A6;
+}
+
+.buttonLike {
+    margin: 2px 0px 0px 12px;
+}
+.decorated_Message_1 {
+    border: 1px solid;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left: 65px;
+    margin-bottom: 7px;
+    background-color: azure;
+}
+.decorated_Message_2 {
+    border: 1px solid;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 55px;
+    margin-bottom: 5px;
+    background-color: azure;
 }

@@ -5,23 +5,32 @@
     width: 250px;
     height: 250px;
 }
-.nameStatus{
+
+.nameStatus {
     display: flex;
     justify-content: center;
-}
-.containerInput{
-    display: flex;
-    justify-content: center;
+    width: 265px;
+    font-size: 18px;
+    font-family: "Marck Script",sans-serif;
+    text-align: center;
 }
 
-.data_users {
-display: block;
-height: 300px;
-border-color: #265171;
+.containerInput {
+    display: flex;
+    justify-content: center;
 }
+.container {
+    padding: 20px;
+}
+.data_users {
+    display: block;
+    height: 300px;
+    border-color: #265171;
+}
+
 .usersContainer {
-display: flex;
-height: 250px;
+    display: flex;
+    height: 250px;
     width: auto;
     border-color: #265171;
 }
@@ -32,6 +41,7 @@ height: 250px;
     border-radius: 15px;
     height: 250px;
 }
+
 .dataContainer {
     border-radius: 15px;
     height: 57px;
@@ -42,9 +52,28 @@ height: 250px;
 }
 
 .fullname {
-   width: 70%;
+    width: 70%;
 }
 
 .name {
     margin-right: 20px;
+    font-weight: bold;
+}
+
+.listAboutUsers {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.user {
+    display: flex;
+    margin: 5px;
+}
+.photo div{
+    background-image: url("../../Picture/m.jpg");
+    width: 100%;
+    padding-bottom: 200px;
+    background-repeat: no-repeat;
+
 }

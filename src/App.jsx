@@ -26,9 +26,10 @@ class App extends React.Component {
             return <Preloader/>
         }
 
-
         return (
             <div className='app-wrapper'>
+
+                <div className='null'></div>
                 <HeaderContainer/>
                 <URL state={this.props.state}/>
                 <div className='app-wrapper-content'>
@@ -40,6 +41,7 @@ class App extends React.Component {
                     <Route path='/users' render={() => <UsersContainer/>}/>
                     <Route path='/login' render={() => <Login/>}/>
                 </div>
+                <div className='null2'></div>
             </div>
         );
     }

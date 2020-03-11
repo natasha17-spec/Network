@@ -1,3 +1,20 @@
 .selectedPage{
     font-weight: bold;
 }
+
+.paginator {
+    padding: 10px 100px;
+}
+.pageNumber {
+    padding: 2px;
+
+}
+
+.pageNumber.selectedPage {
+    font-weight: bold;
+    border-color: black;
+}
+
+span {
+    cursor: pointer;
+}

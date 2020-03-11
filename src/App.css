@@ -1,15 +1,30 @@
 .app-wrapper {
   display: grid;
-  width: 1400px;
+  grid-template-columns: 1fr 200px 700px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "header header header header" "null navbar content null2";
   margin: 0 auto;
-  grid-template-areas: "h h" "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  background-color: #edeef0;
+  font-family: 'Oswald', sans-serif;
+}
+.greeting_photo div  {
+  background-image: url("./Picture/imgonline.png");
 }
 
+.null{
+  grid-area: null;
+}
+.null2{
+  grid-area: null2;
+}
 .app-wrapper-content {
   background-color: #a4c1e9;
-  grid-area: c;
+  grid-area: content;
+  min-height: 860px;
+  border-radius: 10px;
 }
 
 .statusUsers{
@@ -105,4 +120,9 @@ font-size: 14px;
   z-index:4;
   position:absolute ;
   left: 300px;
+}
+.photo div{
+  background-image: url("../src/Picture/m.jpg");
+  background-repeat: no-repeat;
+  width: 100%
 }
