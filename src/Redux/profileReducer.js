@@ -18,10 +18,13 @@ let initialState = {
     aboutMe: null,
     lookingForAJob: null,
     lookingForAJobDescription: null,
-    status: ""
+    status: "",
+    newPostText:""
 };
 
 const profileReducer = (state = initialState, action) => {
+    debugger
+
     switch (action.type) {
         case ADD_POST: {
             let newPosts = {
@@ -33,7 +36,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [...state.posts, newPosts],
-                newPostText: ''
+                newPostText: ""
             };
         }
         case SET_USERS_PROFILE: {
@@ -79,15 +82,15 @@ export const setlookingForAJobDescriptionProfile = (lookingForAJobDescription) =
     lookingForAJobDescription
 });
 export const getUserProfile = (userId) => async (dispatch) => {
-    let response = await usersAPI.getProfile(userId)
+    let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };
 export const getStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getStatus(userId)
+    let response = await profileAPI.getStatus(userId);
     dispatch(setStatus(response.data));
 };
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status)
+    let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
     }

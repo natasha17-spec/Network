@@ -7,6 +7,5 @@ const Music = (props) => {
             Music
         </div>
     )
-
 };
 export default Music;

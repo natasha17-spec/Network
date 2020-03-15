@@ -7,6 +7,5 @@ const News = (props) => {
             News
         </div>
     )
-
 };
 export default News;

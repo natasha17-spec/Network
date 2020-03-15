@@ -7,9 +7,7 @@
 }
 .pageNumber {
     padding: 2px;
-
 }
-
 .pageNumber.selectedPage {
     font-weight: bold;
     border-color: black;

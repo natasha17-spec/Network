@@ -3,7 +3,6 @@ import s from './URL.module.css';
 import {NavLink} from "react-router-dom";
 
 
-
 const URL = (props) => {
 
         return (
@@ -27,7 +26,6 @@ const URL = (props) => {
                 <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
             </div>
         </nav>
-
 )
 };
 export default URL;

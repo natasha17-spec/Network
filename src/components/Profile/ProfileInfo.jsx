@@ -11,7 +11,6 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
     }
 
     return (
-
             <div className={s.usersContainer}>
                 <div className={s.data_users}>
                     <img src={profile.photos.large} className={s.users_ava}/>

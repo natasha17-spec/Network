@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_BODY = 'samurai-network/dialogs/UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'samurai-network/dialogs/SEND_MESSAGE';
 
 let inicialState ={
@@ -36,7 +35,4 @@ let inicialState ={
  };
 export  const sendMessageCreator =(newMessageBody) =>
     ({type: SEND_MESSAGE, newMessageBody});
-export  const updateNewMessageBodyCreator =(body) =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
-
 export default dialogsReducer;

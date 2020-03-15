@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 
 let mapStateToProps =(state)=>{
+    debugger
     return{
     posts: state.profilePage.posts,
     newPostText:state.profilePage.newPostText

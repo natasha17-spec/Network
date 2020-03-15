@@ -17,6 +17,7 @@ const MyPosts=React.memo(props => {
     let newPostElement = React.createRef();
     let onAddPost = (values) => {
         props.addPost(values.newPostText);
+        values.newPostText=""
     };
 
     return (
@@ -37,7 +38,8 @@ const AddNewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name="newPostText" component={Textarea}
+                <Field name="newPostText"
+                       component={Textarea}
                        placeholder="Post message"
                        validate={[required, maxLength10]}/>
             </div>
