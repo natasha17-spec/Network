@@ -6,7 +6,6 @@ import s from "./Profile.module.css";
 const Profile = (props) => {
 
     return (
-
         <div className={s.container}>
             <ProfileInfo
                 status={props.status}
@@ -16,6 +15,8 @@ const Profile = (props) => {
                 aboutMe={props.aboutMe}
                 lookingForAJob={props.lookingForAJob}
                 lookingForAJobDescription={props.lookingForAJobDescription}
+                isOwner={props.isOwner}
+                savePhoto={props.savePhoto}
             />
             <MyPostsContainer/>
         </div>

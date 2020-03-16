@@ -6,15 +6,13 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 import UsersContainer from "./users/UsersContainer";
-// import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app-reducer";
-// import {withSuspense} from "./hoc/withSuspense";
 import Preloader from "./components/common/preloader/Preloader";
-// import ProfileContainer from "./components/Profile/ProfileContainer";
+
 const DialogsContainer = React.lazy(() => import('./components/Navbar/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
@@ -42,23 +40,12 @@ class App extends React.Component {
                                <DialogsContainer/>
                                    </React.Suspense>
                               }}/>
-
-
-                    {/*<Route path='/dialogs'*/}
-                    {/*       render={() => <DialogsContainer/>}/>*/}
-                    {/*           render={withSuspense(DialogsContainer)}/> }}/>*/}
-
-                    {/*<Route path='/profile/:userId?'*/}
-                    {/*       render={() => <ProfileContainer/>}/>*/}
-                    {/*           render={withSuspense(ProfileContainer)} /> }}/>*/}
                     <Route path='/profile/:userId?'
                            render={() => {
                                return <React.Suspense fallback={<Preloader/>}>
                                <ProfileContainer/>
                                </React.Suspense>
                            }}/>
-
-
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
