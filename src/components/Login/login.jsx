@@ -22,12 +22,15 @@ const LoginForm = (props)=>{
                         [required],
                         Input,
                         {type:"password"})}
-                    {createField(
-                        null,
-                        "remember_me",
-                        null,Input,
-                        {type:"checkbox"},
-                        "remember me")}
+                   <div >
+                       {createField(
+                           null,
+                           "remember_me",
+                           null,Input,
+                           {type:"checkbox"},
+                           "remember me")}
+                   </div>
+
 
                 {props.error &&
                     <div className={styles.formSummaryContainer}>
@@ -50,7 +53,7 @@ const Login = (props) => {
     if (props.isAuth){
         return <Redirect to={'/profile'}/>
     }
-    return <div>
+    return <div className={styles.login}>
         <h1>LOGIN</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>

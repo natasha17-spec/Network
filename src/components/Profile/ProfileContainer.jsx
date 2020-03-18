@@ -5,6 +5,7 @@ import {
     getStatus,
     getUserProfile,
     savePhoto,
+    saveProfile,
     setAboutMeProfile,
     setFullnameProfile,
     setlookingForAJobDescriptionProfile,
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component {
                      lookingForAJobDescription={this.props.lookingForAJobDescription}
                     isOwner={!this.props.match.params.userId}
                     savePhoto={this.props.savePhoto}
+
             />
         );
     }
@@ -76,7 +78,7 @@ export default compose(
             setFullnameProfile,
             setAboutMeProfile,
             setlookingForAJobProfile,
-            setlookingForAJobDescriptionProfile,savePhoto}),
+            setlookingForAJobDescriptionProfile,savePhoto, saveProfile}),
         withRouter,withAuthRedirect
     )(ProfileContainer);
 

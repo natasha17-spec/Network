@@ -1,14 +1,102 @@
 .formControl.error input,
-.formControl.error textarea
-{
+.formControl.error textarea {
  border: solid 1px red;
 }
-.formControl textarea{
- width: 300px;
- height: 150px;
+
+.formControl textarea {
+ width: 200px;
+ height: 100px;
  background-color: aliceblue;
  font-family: unset;
 }
+
+.rememberMe {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.login {
+ margin: 50px;
+ width: 300px;
+ min-height: 150px;
+ padding: 0 0 1px 0;
+ position: relative;
+ background: #f3f3f3;
+ background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#f3f3f3), to(#fff), color-stop(.1, #f3f3f3));
+ background: -moz-linear-gradient(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
+ border-top: 1px solid white;
+ border-right: 1px solid #ccc;
+ -webkit-border-bottom-right-radius: 60px 60px;
+ -moz-border-radius-bottomright: 60px 60px;
+ border-bottom-right-radius: 60px 60px;
+ -webkit-box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.2);
+ -moz-box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.2);
+ box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.login:before {
+ content: '';
+ width: 25px;
+ height: 20px;
+ background: white;
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ background: #fff;
+ background: -webkit-gradient(linear, 0% 20%, 50% 40%, from(#fff), to(#eee), color-stop(.1, #fff));
+ background: -moz-linear-gradient(0 50%, #fff, #fff 10%, #eee);
+ -webkit-border-bottom-right-radius: 30px;
+ -moz-border-radius-bottomright: 30px;
+ border-bottom-right-radius: 30px;
+ -webkit-box-shadow: -3px -2px 5px rgba(0, 0, 0, 0.3);
+ -moz-box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.3);
+ box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.3);
+ -webkit-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ -moz-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ -o-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+ transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+}
+
+
+.login:after {
+ content: '';
+ z-index: -1;
+ width: 100px;
+ height: 100px;
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ background: rgba(0, 0, 0, 0.2);
+ display: inline-block;
+ -webkit-box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2);
+ -moz-box-shadow: 20px 20px 17px rgba(0, 0, 0, 0.2);
+ box-shadow: 20px 20px 17px rgba(0, 0, 0, 0.2);
+ -webkit-transform: rotate(0deg) translate(-45px, -20px) skew(20deg);
+ -moz-transform: rotate(0deg) translate(-40px, -17px) skew(20deg);
+ -o-transform: rotate(0deg) translate(-40px, -17px) skew(20deg);
+ transform: rotate(0deg) translate(-40px, -17px) skew(20deg);
+}
+.box11_tape {
+ position: absolute;
+ top: -25px;
+ left: 30%;
+ width: 130px;
+ height: 40px;
+ background: #ccc;
+ background: -webkit-gradient(linear, 555% 20%, 0% 92%, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.0)), color-stop(.1, rgba(0, 0, 0, 0.2)));
+ background: -moz-linear-gradient(555% 0 180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0.0));
+ border-left: 1px dashed rgba(0, 0, 0, 0.1);
+ border-right: 1px dashed rgba(0, 0, 0, 0.1);
+ -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+ -moz-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+ box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+}
+
 .error {
  color: #ff430f;
 }
@@ -27,7 +115,10 @@
 .formOnButton{
  display: flex;
  justify-content: center;
- width: 165px;
- margin-top: 8px;
+ margin-bottom: 13px;
 }
 
+h1 {
+ display: flex;
+ justify-content: center;
+}

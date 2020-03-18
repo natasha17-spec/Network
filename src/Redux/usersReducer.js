@@ -19,9 +19,13 @@ let initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
+
     switch (action.type) {
+
         case FOLLOW:
+            debugger
             return {
+
                 ...state,
                 users:updateObjectInArray(state.users, action.userId,
                     "id", {followed:true})
@@ -71,21 +75,24 @@ export const getUsers=(page, pageSize)=>{
     };
 };
 export default usersReducer;
+
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toogleFollowingProgress(true, userId));
-    let response = await apiMethod(userId)
-    if (response.resultCode === 0) {
-        dispatch(actionCreator(userId))
+    let response = await apiMethod(userId);
+
+    if (response.data.resultCode == 0) {
+        dispatch(actionCreator(userId));
     }
-    dispatch(toogleFollowingProgress(false))
-};
+    dispatch(toogleFollowingProgress(false, userId));
+}
+
 export const follow = (userId) => {
     return async (dispatch) => {
         followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccsess);
-    };
-};
+    }
+}
 export const unfollow = (userId) => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch, userId,usersAPI.unfollow.bind(usersAPI),unfollowSuccsess);
-    };
+        followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccsess);
+    }
 }
