@@ -57,8 +57,11 @@ const usersReducer = (state = initialState, action) => {
 };
 
 
-export const followSuccsess = (UserId) => ({type: FOLLOW, UserId});
-export const unfollowSuccsess = (UserId) => ({type: UNFOLLOW, UserId});
+export const followSuccsess = (userId) => {
+    debugger
+    return {type: FOLLOW, userId}
+};
+export const unfollowSuccsess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCount = (totalUsersCount)=>({type:SET_TOTAL_USERS_COUNT,count:totalUsersCount});
@@ -77,16 +80,19 @@ export const getUsers=(page, pageSize)=>{
 export default usersReducer;
 
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    debugger
     dispatch(toogleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
 
-    if (response.data.resultCode == 0) {
+    if (response.resultCode === 0) {
+        debugger
         dispatch(actionCreator(userId));
     }
     dispatch(toogleFollowingProgress(false, userId));
 }
 
-export const follow = (userId) => {
+export const follow =  (userId) => {
+    debugger
     return async (dispatch) => {
         followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccsess);
     }

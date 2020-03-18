@@ -4,7 +4,7 @@ import {ProfileInfoUser} from "./ProfileInfoUser";
 import {createField, Input, Textarea} from "../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 
-const ProfileDataForm=(handleSubmit,profile)=>{
+const ProfileDataForm=({handleSubmit})=>{
     return  (
         <div  className={s.contactsForm}>
             <form onSubmit={handleSubmit}>
@@ -15,7 +15,7 @@ const ProfileDataForm=(handleSubmit,profile)=>{
                 {ProfileInfoUser("Fullname", createField("Full name", "fullName", [], Input))}
                 {ProfileInfoUser("AboutMe", createField("AboutMe", "AboutMe", [], Textarea))}
                 {ProfileInfoUser("lookingForAJob", createField("lookingForAJob", "lookingForAJob", [], Input,{type:'checkbox'}))}
-                {ProfileInfoUser("My skills", createField("My skills", "My skills", [], Input))}
+                {ProfileInfoUser("My skills", createField("My skills", "lookingForAJobDescription", [], Input))}
 
             </div>
         </form>
