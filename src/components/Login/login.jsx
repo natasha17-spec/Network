@@ -7,42 +7,44 @@ import {login} from "../../Redux/AuthReducer";
 import {Redirect} from "react-router-dom";
 import styles from "./../common/FormsControls/FormsControls.module.css"
 
-const LoginForm = (props)=>{
-        return (
+const LoginForm = (props) => {
+    return (
+        <div className={styles.form}>
             <form onSubmit={props.handleSubmit}>
 
+                {createField(
+                    "Email",
+                    "email",
+                    [required],
+                    Input)}
+                {createField(
+                    "Email",
+                    "password",
+                    [required],
+                    Input,
+                    {type: "password"})}
+                <div>
                     {createField(
-                        "Email",
-                        "email",
-                        [required],
-                        Input)}
-                    {createField(
-                        "Email",
-                        "password",
-                        [required],
-                        Input,
-                        {type:"password"})}
-                   <div >
-                       {createField(
-                           null,
-                           "remember_me",
-                           null,Input,
-                           {type:"checkbox"},
-                           "remember me")}
-                   </div>
+                        null,
+                        "remember_me",
+                        null, Input,
+                        {type: "checkbox"},
+                        "remember me")}
+                </div>
 
 
                 {props.error &&
-                    <div className={styles.formSummaryContainer}>
-                        <div className={styles.formSummaryError}>{props.error}</div>
-                    </div>
+                <div className={styles.formSummaryContainer}>
+                    <div className={styles.formSummaryError}>{props.error}</div>
+                </div>
                 }
                 <div className={styles.formOnButton}>
                     <button>Login</button>
                 </div>
             </form>
-        )
-    };
+        </div>
+    )
+};
 const LoginReduxForm =  reduxForm({form: 'login'})(LoginForm);
 const Login = (props) => {
 

@@ -4,10 +4,10 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import s from "./Profile.module.css";
 
 const Profile = (props) => {
-
     return (
         <div className={s.container}>
             <ProfileInfo
+                saveProfile={props.saveProfile}
                 status={props.status}
                 updateStatus={props.updateStatus}
                 profile={props.profile}
@@ -17,7 +17,6 @@ const Profile = (props) => {
                 lookingForAJobDescription={props.lookingForAJobDescription}
                 isOwner={props.isOwner}
                 savePhoto={props.savePhoto}
-                saveProfile={props.saveProfile}
             />
             <MyPostsContainer/>
         </div>

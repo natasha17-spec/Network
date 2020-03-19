@@ -2,7 +2,10 @@
 .formControl.error textarea {
  border: solid 1px red;
 }
-
+.form {
+ display: flex;
+ justify-content: center;
+}
 .formControl textarea {
  width: 200px;
  height: 100px;

@@ -71,16 +71,19 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-        connect(mapStateToProps, {
-            getStatus,
-            updateStatus,
-            getUserProfile,
-            setFullnameProfile,
-            setAboutMeProfile,
-            setlookingForAJobProfile,
-            setlookingForAJobDescriptionProfile,savePhoto, saveProfile}),
-        withRouter,withAuthRedirect
-    )(ProfileContainer);
+    connect(mapStateToProps, {
+        saveProfile,
+        getStatus,
+        updateStatus,
+        getUserProfile,
+        setFullnameProfile,
+        setAboutMeProfile,
+        setlookingForAJobProfile,
+        setlookingForAJobDescriptionProfile,
+        savePhoto,
+        }),
+    withRouter,withAuthRedirect
+)(ProfileContainer);
 
 
 

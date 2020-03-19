@@ -1,13 +1,14 @@
 import {profileAPI, usersAPI} from "../API/Api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'samurai-network/profile/ADD-POST';
 const SET_USERS_PROFILE = 'samurai-network/profile/SET_USERS_PROFILE';
-const FULLNAME_PROFILE ='samurai-network/profile/FULLNAME_PROFILE';
-const ABOUTME_PROFILE ='samurai-network/profile/ABOUTME_PROFILE';
-const LOOKING_FOR_A_JOB ='samurai-network/profile/LOOKING_FOR_A_JOB';
-const LOOKING_FOR_A_JOB_DESCRIPTION ='samurai-network/profile/LOOKING_FOR_A_JOB_DESCRIPTION';
-const SET_STATUS='samurai-network/profile/SET_STATUS';
-const SAVE_PHOTO_SUCCESS='samurai-network/profile/SAVE_PHOTO_SUCCESS';
+const FULLNAME_PROFILE = 'samurai-network/profile/FULLNAME_PROFILE';
+const ABOUTME_PROFILE = 'samurai-network/profile/ABOUTME_PROFILE';
+const LOOKING_FOR_A_JOB = 'samurai-network/profile/LOOKING_FOR_A_JOB';
+const LOOKING_FOR_A_JOB_DESCRIPTION = 'samurai-network/profile/LOOKING_FOR_A_JOB_DESCRIPTION';
+const SET_STATUS = 'samurai-network/profile/SET_STATUS';
+const SAVE_PHOTO_SUCCESS = 'samurai-network/profile/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     posts: [
@@ -20,7 +21,7 @@ let initialState = {
     lookingForAJob: null,
     lookingForAJobDescription: null,
     status: "",
-    newPostText:""
+    newPostText: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -64,7 +65,7 @@ const profileReducer = (state = initialState, action) => {
             };
         }
         case SAVE_PHOTO_SUCCESS:
-            return {...state, profile: {...state.profile, photos: action.photos }};
+            return {...state, profile: {...state.profile, photos: action.photos}};
         default:
             return state
     }
@@ -108,6 +109,10 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     const response = await profileAPI.saveProfile(profile);
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit("edit-profile",
+            {_error: response.data.messages[0]}));
+        return Promise.reject(response.data.messages[0]);
     }
 };
 export default profileReducer;

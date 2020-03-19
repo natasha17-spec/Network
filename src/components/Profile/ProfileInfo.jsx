@@ -7,7 +7,8 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
 
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
+const ProfileInfo = ({ saveProfile, savePhoto,profile, status, updateStatus, isOwner, }) => {
+
     let [editMode, setEditMode] = useState(false);
 
     if (!profile) {
@@ -39,18 +40,23 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
             { editMode
                 ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                : <ProfileData goToEditMode={() => {setEditMode(true)} } profile={profile} isOwner={isOwner}/> }
+                : <ProfileData goToEditMode={() => {setEditMode(true)}}
+                               profile={profile} isOwner={isOwner}/>
+            }
         </div>
     );
 };
 
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return <div className={s.listAboutUsers}>
+
         {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
+
         {ProfileInfoUser("Fullname", profile.fullName)}
         {ProfileInfoUser("AboutMe", profile.aboutMe)}
         {ProfileInfoUser("lookingForAJob", profile.lookingForAJob ? 'Да' : "Нет")}
         {ProfileInfoUser("My skills", profile.lookingForAJobDescription)}
+
         <div className={s.contactContainer}>
             <b className={s.decoreContacts}>Contact</b>:
             <div className={s.contacts}>
