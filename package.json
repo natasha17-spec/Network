@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "homepage": "https://natasha17-spec.github.io/Network",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "react": "^16.13.0",
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +42,7 @@
   },
   "devDependencies": {
     "babel-plugin-inline-react-svg": "^1.1.1",
+    "gh-pages": "^2.2.0",
     "jquery": "^3.4.1"
   }
 }
