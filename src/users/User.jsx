@@ -14,8 +14,6 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
                     </NavLink>
                 </div>
                 <div>
-
-
                     {user.followed
                         ? <button disabled={followingInProgress}
                                   onClick={() => {

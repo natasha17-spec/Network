@@ -21,7 +21,6 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
-            debugger
             return {
                 ...state,
                 users:updateObjectInArray(state.users, action.userId,
@@ -54,10 +53,7 @@ const usersReducer = (state = initialState, action) => {
 };
 
 
-export const followSuccsess = (userId) => {
-    debugger
-    return {type: FOLLOW, userId}
-};
+export const followSuccsess = (userId) => {return {type: FOLLOW, userId}};
 export const unfollowSuccsess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
@@ -77,7 +73,7 @@ export const getUsers=(page, pageSize)=>{
 export default usersReducer;
 
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
-    debugger
+
     dispatch(toogleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
 
