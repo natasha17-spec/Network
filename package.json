@@ -2,7 +2,7 @@
   "name": "kamasutra",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://natasha17-spec.github.io/Network",
+  "homepage": "https://natasha17-spec.github.io/Network/",
   "dependencies": {
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
