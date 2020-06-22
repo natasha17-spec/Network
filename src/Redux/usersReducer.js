@@ -60,6 +60,7 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const setTotalUsersCount = (totalUsersCount)=>({type:SET_TOTAL_USERS_COUNT,count:totalUsersCount});
 export const toogleIsFetching = (isFetching)=>({type:TOGGLE_IS_FETCHING,isFetching});
 export const toogleFollowingProgress = (isFetching)=>({type:TOGGLE_IS_FOLLOWING_PROGRESS,isFetching});
+
 export const getUsers=(page, pageSize)=>{
     return async (dispatch)=>{
         dispatch(toogleIsFetching(true));
@@ -76,7 +77,6 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
 
     dispatch(toogleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
-
     if (response.resultCode === 0) {
         debugger
         dispatch(actionCreator(userId));
@@ -90,6 +90,7 @@ export const follow =  (userId) => {
         followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccsess);
     }
 }
+
 export const unfollow = (userId) => {
     return async (dispatch) => {
         followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccsess);
