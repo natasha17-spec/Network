@@ -6,7 +6,7 @@ import usersReducer from "./usersReducer";
 import authReducer from "./AuthReducer";
 import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from 'redux-form'
-import appReducer from "./app-reducer";
+import appReducer from "./App-reducer";
 
 declare global {
         interface Window {
