@@ -4,12 +4,12 @@ import {AppStateType} from "./redux-store";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
-    let initialState = {
-    initialized: false
-};
 type InitialStateType = {
     initialized:boolean
 }
+let initialState = {
+    initialized: false
+};
 
 const appReducer = (state:InitialStateType = initialState, action:InitializedSuccessType) => {
     if (action.type === INITIALIZED_SUCCESS) {

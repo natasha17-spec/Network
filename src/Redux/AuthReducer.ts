@@ -6,7 +6,7 @@ import {AppStateType} from "./redux-store";
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCSESS = 'samurai-network/auth/GET_CAPTCHA_URL_SUCCSESS';
 
-type initialStateType = {
+type InitialStateType = {
     id: null | number,
     email: null | string,
     login: null | string,
@@ -29,7 +29,7 @@ let initialState = {
     rememberMe: false,
 };
 
-const authReducer = (state: initialStateType = initialState, action:AuthActionType) => {
+const authReducer = (state: InitialStateType = initialState, action:AuthActionType) => {
     switch (action.type) {
         case SET_USER_DATA:
         case GET_CAPTCHA_URL_SUCCSESS:
