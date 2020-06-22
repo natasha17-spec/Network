@@ -11,7 +11,7 @@ type InitialStateType = {
     initialized:boolean
 }
 
-const appReducer = (state:InitialStateType = initialState, action) => {
+const appReducer = (state:InitialStateType = initialState, action:InitializedSuccessType) => {
     if (action.type === INITIALIZED_SUCCESS) {
         return {
             ...state,
