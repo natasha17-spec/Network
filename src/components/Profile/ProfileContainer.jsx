@@ -11,7 +11,7 @@ import {
     setlookingForAJobDescriptionProfile,
     setlookingForAJobProfile,
     updateStatus,
-} from "../../Redux/profileReducer";
+} from "../../Redux/ProfileReducer";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
