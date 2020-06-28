@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import navBarReducer from "./NavBarReducer";
 import dialogsReducer from "./DialogsReducer";
 import profileReducer from "./ProfileReducer";
-import usersReducer from "./usersReducer";
+import usersReducer from "./UsersReducer";
 import authReducer from "./AuthReducer";
 import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from 'redux-form'
