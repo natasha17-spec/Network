@@ -11,7 +11,6 @@ let initialState:InitialStateType = {
 };
 
 const navBarReducer = (state = initialState, action:any) => {
-
     return state;
 };
 export default navBarReducer;
