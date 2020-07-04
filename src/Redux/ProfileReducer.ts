@@ -2,6 +2,7 @@ import {profileAPI, usersAPI} from "../API/Api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
+import {PhotosType, ProfileType} from "../types/types";
 
 const ADD_POST = 'samurai-network/profile/ADD-POST';
 const SET_USERS_PROFILE = 'samurai-network/profile/SET_USERS_PROFILE';
@@ -12,28 +13,7 @@ const LOOKING_FOR_A_JOB_DESCRIPTION = 'samurai-network/profile/LOOKING_FOR_A_JOB
 const SET_STATUS = 'samurai-network/profile/SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'samurai-network/profile/SAVE_PHOTO_SUCCESS';
 
-type ContactsType = {
-    github: string
-    vk: string
-    facebook: string
-    instagram: string
-    twitter: string
-    website:string
-    youtube:string
-    mainLink: string
-}
-type PhotosType = {
-    small?:null | string
-    large:null | string
-}
-type ProfileType = {
-    userId: number
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName:string
-    contacts:ContactsType
-    photos:PhotosType
-}
+
 
 type InitialStateType = {
     posts: Array<{ id: number, message: any, likesCount: number }>,
@@ -115,10 +95,7 @@ type AddPostActionCreatorType = {
     newPostText: any
 }
 
-// type PhotosType = {
-//     small?: string,
-//     large: string
-// }
+
 type SetProfileType = {
     resultCode: number,
     messages: Array<string>
@@ -131,7 +108,7 @@ type SavePhotoSuccessType = {
 }
 type SetUserProfileType = {
     type: typeof SET_USERS_PROFILE,
-    profile: SetProfileType
+    profile:  (null | ProfileType),
 }
 type SetStatusType = {
     type: typeof SET_STATUS,
@@ -156,7 +133,7 @@ type setlookingForAJobDescriptionProfile = {
 //*Action creators
 export const addPostActionCreator = (newPostText: any): AddPostActionCreatorType => ({type: ADD_POST, newPostText});
 export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos})
-export const setUserProfile = (profile: SetProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
+export const setUserProfile = (profile:null | ProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const setFullnameProfile = (fullName: string): SetFullnameProfileType => ({type: FULLNAME_PROFILE, fullName});
 export const setAboutMeProfile = (aboutMe: (string | number)): SetAboutMeProfileType => ({
