@@ -12,14 +12,14 @@ type InitialStateType = {
     login: null | string,
     isFetching: boolean,
     isAuth: boolean,
-    captchaUrl: null | boolean,
+    captchaUrl: null | string,
     password: any,
     rememberMe: boolean,
 }
 
 
 let initialState = {
-    id: null,
+    id: null ,
     email: null,
     login: null,
     isFetching: false,
@@ -43,20 +43,27 @@ const authReducer = (state: InitialStateType = initialState, action:AuthActionTy
 };
 
 //*Action creators type
+type SetAuthUserDataActionPayloadType = {
+    id: null | number
+    email: null | string
+    login: null | string
+    isAuth: boolean
+}
+
 type SetAuthUserDataType = {
     type: typeof SET_USER_DATA,
-    payload: {}
+    payload: SetAuthUserDataActionPayloadType
 }
 type GetCaptchaUrlSuccsessType = {
     type: typeof GET_CAPTCHA_URL_SUCCSESS,
-    payload: {}
+    payload: { captchaUrl: string }
 }
 
 export const setAuthUserData = (id: null | number, email: null | string, login: null | string, isAuth: boolean): SetAuthUserDataType => (
     {type: SET_USER_DATA, payload: {id, email, login, isAuth}});
 
 
-export const getCaptchaUrlSuccsess = (captchaUrl: null | boolean): GetCaptchaUrlSuccsessType => (
+export const getCaptchaUrlSuccsess = (captchaUrl: string): GetCaptchaUrlSuccsessType => (
     {type: GET_CAPTCHA_URL_SUCCSESS, payload: {captchaUrl}});
 
 type AuthActionType = SetAuthUserDataType | GetCaptchaUrlSuccsessType

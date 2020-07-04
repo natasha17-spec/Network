@@ -7,11 +7,11 @@ const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 type InitialStateType = {
     initialized:boolean
 }
-let initialState = {
+let initialState:InitialStateType = {
     initialized: false
 };
 
-const appReducer = (state:InitialStateType = initialState, action:InitializedSuccessType) => {
+const appReducer = (state = initialState, action:InitializedSuccessType):InitialStateType => {
     if (action.type === INITIALIZED_SUCCESS) {
         return {
             ...state,

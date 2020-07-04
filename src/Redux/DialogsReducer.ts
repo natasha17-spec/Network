@@ -5,7 +5,7 @@ type InitialStateType = {
     messagesData: Array<{ id: number, message: string }>,
 }
 
-let initialState = {
+let initialState: InitialStateType= {
     dialogsData: [
         {id: 1, name: 'Natasha'},
         {id: 2, name: 'Sveta'},
@@ -24,7 +24,7 @@ let initialState = {
     ]
 
 };
-const dialogsReducer = (state: InitialStateType = initialState, action: any) => {
+const dialogsReducer = (state = initialState, action: any):InitialStateType => {
 
     switch (action.type) {
         case SEND_MESSAGE:

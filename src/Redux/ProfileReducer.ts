@@ -12,9 +12,32 @@ const LOOKING_FOR_A_JOB_DESCRIPTION = 'samurai-network/profile/LOOKING_FOR_A_JOB
 const SET_STATUS = 'samurai-network/profile/SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'samurai-network/profile/SAVE_PHOTO_SUCCESS';
 
+type ContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website:string
+    youtube:string
+    mainLink: string
+}
+type PhotosType = {
+    small?:null | string
+    large:null | string
+}
+type ProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName:string
+    contacts:ContactsType
+    photos:PhotosType
+}
+
 type InitialStateType = {
     posts: Array<{ id: number, message: any, likesCount: number }>,
-    profile: (null | object),
+    profile: (null | ProfileType),
     fullName: (null | string),
     aboutMe:(null | string),
     lookingForAJob:(null | boolean),
@@ -92,11 +115,11 @@ type AddPostActionCreatorType = {
     newPostText: any
 }
 
-type PhotosType = {
-    small?: string,
-    large: string
-}
-type ProfileType = {
+// type PhotosType = {
+//     small?: string,
+//     large: string
+// }
+type SetProfileType = {
     resultCode: number,
     messages: Array<string>
     data: object
@@ -108,7 +131,7 @@ type SavePhotoSuccessType = {
 }
 type SetUserProfileType = {
     type: typeof SET_USERS_PROFILE,
-    profile: ProfileType
+    profile: SetProfileType
 }
 type SetStatusType = {
     type: typeof SET_STATUS,
@@ -133,7 +156,7 @@ type setlookingForAJobDescriptionProfile = {
 //*Action creators
 export const addPostActionCreator = (newPostText: any): AddPostActionCreatorType => ({type: ADD_POST, newPostText});
 export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos})
-export const setUserProfile = (profile: ProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
+export const setUserProfile = (profile: SetProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const setFullnameProfile = (fullName: string): SetFullnameProfileType => ({type: FULLNAME_PROFILE, fullName});
 export const setAboutMeProfile = (aboutMe: (string | number)): SetAboutMeProfileType => ({
@@ -185,7 +208,7 @@ export const savePhoto = (file:any) => async (dispatch:ThunkDispatchType) => {
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
 };
-export const saveProfile = (profile:ProfileType) => async (dispatch:ThunkDispatchType, getState:() => AppStateType)=> {
+export const saveProfile = (profile:SetProfileType) => async (dispatch:ThunkDispatchType, getState:() => AppStateType)=> {
     const userId = getState().auth.id;
     const response = await profileAPI.saveProfile(profile);
     if (response.data.resultCode === 0) {
