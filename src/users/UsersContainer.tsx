@@ -1,11 +1,9 @@
 import React from 'react'
-// @ts-ignore
 import Users from "./Users";
 import Preloader from "../components/common/preloader/Preloader";
-import {follow, getUsers, setCurrentPage, toogleFollowingProgress, unfollow} from "../Redux/UsersReducer";
+import {follow, getUsers, unfollow} from "../Redux/UsersReducer";
 import {UserType} from "../types/types";
 import {AppStateType} from "../Redux/redux-store";
-// @ts-ignore
 import {connect} from 'react-redux'
 import {
     getCurrentPage,
@@ -17,19 +15,24 @@ import {
 } from "../Redux/users-selector";
 import {compose} from "redux";
 
-type PropsType = {
-    currentPage: number,
-    pageSize: number,
-    isFetching: boolean,
-    totalUsersCount: number,
-    followingInProgress: Array<number>
+type MapStateToPropsType = {
     users: Array<UserType>,
-
-    unfollow: () => void,
-    follow: () => void,
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number,
+    isFetching: boolean,
+    followingInProgress: Array<number>
+}
+type MapDispatchToPropsType = {
+    unfollow: (userId: number) => void,
+    follow: (userId: number) => void,
     getUsers: (pageNumber: number, pageSize: number) => void,
+    // setCurrentPage:(currentPage: number)=>void,
+    // toogleFollowingProgress:(isFetching: boolean, userId?: number)=>void
 }
 
+type OwnPropsType = {}
+type PropsType = MapDispatchToPropsType & MapStateToPropsType & OwnPropsType
 
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount = () => {
@@ -58,7 +61,7 @@ class UsersContainer extends React.Component<PropsType> {
     }
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         users: getsUsers(state),
         pageSize: getPageSize(state),
@@ -69,9 +72,8 @@ let mapStateToProps = (state: AppStateType) => {
     };
 };
 
-export default compose(connect(mapStateToProps,
-        {
-            follow, unfollow,
-            setCurrentPage, toogleFollowingProgress,
-            getUsers
-        }))(UsersContainer)
+export default compose(connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>(mapStateToProps,
+    {
+        follow, unfollow,
+        getUsers
+    }))(UsersContainer)
