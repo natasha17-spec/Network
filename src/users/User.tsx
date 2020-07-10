@@ -1,7 +1,6 @@
 import React from 'react';
 import "../App.css"
 import userPhoto from "../Picture/images.png";
-// @ts-ignore
 import {NavLink} from "react-router-dom";
 import {UserType} from "../types/types";
 
@@ -9,12 +8,13 @@ import {UserType} from "../types/types";
 type PropsType = {
     user:UserType,
     followingInProgress:Array<number>,
-    unfollow:()=>void,
-    follow:()=>void
+    unfollow: (userId: number) => void,
+    follow: (userId: number) => void,
 }
 
 
 let User:React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
+
     return (
         <div className="allUsers">
             <div className='nickUsers'>

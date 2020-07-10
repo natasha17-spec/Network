@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 
 type OwnPropsType = {
     isAuth:boolean,
-    login:boolean,
+    login:string|null,
     logout:()=>void,
     setAuthUserData:(id: null | number, email: null | string, login: null | string, isAuth: boolean)=>void
 }

@@ -1,4 +1,4 @@
-import {profileAPI, usersAPI} from "../API/Api";
+import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
@@ -24,7 +24,7 @@ type InitialStateType = {
     lookingForAJobDescription:(null | string),
     status: (null | string),
     newPostText: string,
-    id: null | number
+    id:  null | number
 }
 
 let initialState = {
@@ -96,7 +96,7 @@ type AddPostActionCreatorType = {
 }
 
 
-type SetProfileType = {
+export type SetProfileType = {
     resultCode: number,
     messages: Array<string>
     data: object
@@ -164,7 +164,7 @@ type ProfileActionType =
 type ThunkType = ThunkAction<void, AppStateType, unknown, ProfileActionType>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ProfileActionType>
 
-export const getUserProfile = (userId:null | number):ThunkType => async (dispatch:ThunkDispatchType) => {
+export const getUserProfile = (userId: null | number):ThunkType => async (dispatch:ThunkDispatchType) => {
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };
