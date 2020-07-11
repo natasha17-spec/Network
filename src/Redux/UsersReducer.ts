@@ -1,8 +1,8 @@
-import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utils/objects-helper";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
 import {UserType} from "../types/types";
+import {usersAPI} from "../api/getUsers-api";
 
 const FOLLOW = 'samurai-network/users/FOLLOW';
 const UNFOLLOW = 'samurai-network/users/UNFOLLOW';

@@ -1,8 +1,9 @@
-import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
 import {PhotosType, ProfileType} from "../types/types";
+import {usersAPI} from "../api/getUsers-api";
+import {profileAPI} from "../api/profile-api";
 
 const ADD_POST = 'samurai-network/profile/ADD-POST';
 const SET_USERS_PROFILE = 'samurai-network/profile/SET_USERS_PROFILE';
@@ -24,7 +25,7 @@ type InitialStateType = {
     lookingForAJobDescription:(null | string),
     status: (null | string),
     newPostText: string,
-    id:  null | number
+    id:  null |  number
 }
 
 let initialState = {
@@ -164,7 +165,7 @@ type ProfileActionType =
 type ThunkType = ThunkAction<void, AppStateType, unknown, ProfileActionType>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ProfileActionType>
 
-export const getUserProfile = (userId: null | number):ThunkType => async (dispatch:ThunkDispatchType) => {
+export const getUserProfile = (userId: number):ThunkType => async (dispatch:ThunkDispatchType) => {
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };

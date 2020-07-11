@@ -1,6 +1,6 @@
-import {authMe} from "./AuthReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
+import {authMe} from "./AuthReducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 

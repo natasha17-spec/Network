@@ -27,8 +27,6 @@ type MapDispatchToPropsType = {
     unfollow: (userId: number) => void,
     follow: (userId: number) => void,
     getUsers: (pageNumber: number, pageSize: number) => void,
-    // setCurrentPage:(currentPage: number)=>void,
-    // toogleFollowingProgress:(isFetching: boolean, userId?: number)=>void
 }
 
 type OwnPropsType = {}

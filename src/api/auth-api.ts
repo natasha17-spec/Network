@@ -7,7 +7,7 @@ type MeResponseType = {
 
 }
 type loginResponseType = {
-     userId: string
+     userId: number
  }
 
 export const authAPI = {
