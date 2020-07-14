@@ -4,21 +4,21 @@ export type ContactsType = {
     facebook: string
     instagram: string
     twitter: string
-    website:string
-    youtube:string
+    website: string
+    youtube: string
     mainLink: string
 }
 export type PhotosType = {
-    small?:null | string
-    large:null | string
+    small: null | string
+    large: null | string
 }
 export type ProfileType = {
     userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
-    fullName:string
-    contacts:ContactsType
-    photos:PhotosType
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
     aboutMe: string
 }
 export type UserType = {
@@ -29,7 +29,13 @@ export type UserType = {
     followed: boolean
 }
 export type GetItemsType = {
-    items:Array<UserType>
-    totalCount:number
-    error:string | null
+    items: Array<UserType>
+    totalCount: number
+    error: string | null
+}
+
+export  type PostType = {
+    id: number,
+    message: string,
+    likesCount: number
 }

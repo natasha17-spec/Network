@@ -1,7 +1,9 @@
 import {PhotosType, ProfileType} from "../types/types";
-import {SetProfileType} from "../Redux/ProfileReducer";
 import {ApiResponseType, instance} from "./api";
 
+type SavePhotoResponseDataType = {
+    photos: PhotosType
+}
 
 export const profileAPI = {
     getProfile(userId:  number) {
@@ -16,13 +18,13 @@ export const profileAPI = {
     savePhoto(photoFile: any) {
         const formData = new FormData();
         formData.append("image", photoFile);
-        return instance.put<ApiResponseType<PhotosType>>(`profile/photo`, formData, {
+        return instance.put<ApiResponseType<SavePhotoResponseDataType>>(`profile/photo`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
     },
-    saveProfile(profile: SetProfileType) {
+    saveProfile(profile: ProfileType) {
         return instance.put<ApiResponseType>(`profile`, profile)
     },
 };

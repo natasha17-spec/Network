@@ -1,7 +1,7 @@
 import {stopSubmit} from "redux-form";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
-import {PhotosType, ProfileType} from "../types/types";
+import {PhotosType, PostType, ProfileType} from "../types/types";
 import {usersAPI} from "../api/getUsers-api";
 import {profileAPI} from "../api/profile-api";
 
@@ -15,35 +15,17 @@ const SET_STATUS = 'samurai-network/profile/SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'samurai-network/profile/SAVE_PHOTO_SUCCESS';
 
 
-
-type InitialStateType = {
-    posts: Array<{ id: number, message: any, likesCount: number }>,
-    profile: (null | ProfileType),
-    fullName: (null | string),
-    aboutMe:(null | string),
-    lookingForAJob:(null | boolean),
-    lookingForAJobDescription:(null | string),
-    status: (null | string),
-    newPostText: string,
-    id:  null |  number
-}
-
 let initialState = {
     posts: [
         {id: 1, message: 'I am fine!', likesCount: 45},
         {id: 2, message: 'Hey! How are you?', likesCount: 23}
-    ],
-    profile: null,
-    fullName: null,
-    aboutMe: null,
-    lookingForAJob: null,
-    lookingForAJobDescription: null,
+    ] as Array<PostType>,
+    profile: null as ProfileType | null,
     status: "",
-    newPostText: "",
-    id: null,
+
 };
 
-const profileReducer = (state: InitialStateType = initialState, action: ProfileActionType) => {
+const profileReducer = (state = initialState, action: ProfileActionType) => {
     switch (action.type) {
         case ADD_POST: {
             let newPosts = {
@@ -109,7 +91,7 @@ type SavePhotoSuccessType = {
 }
 type SetUserProfileType = {
     type: typeof SET_USERS_PROFILE,
-    profile:  (null | ProfileType),
+    profile: (null | ProfileType),
 }
 type SetStatusType = {
     type: typeof SET_STATUS,
@@ -134,7 +116,7 @@ type setlookingForAJobDescriptionProfile = {
 //*Action creators
 export const addPostActionCreator = (newPostText: any): AddPostActionCreatorType => ({type: ADD_POST, newPostText});
 export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos})
-export const setUserProfile = (profile:null | ProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
+export const setUserProfile = (profile: null | ProfileType): SetUserProfileType => ({type: SET_USERS_PROFILE, profile});
 export const setStatus = (status: string): SetStatusType => ({type: SET_STATUS, status});
 export const setFullnameProfile = (fullName: string): SetFullnameProfileType => ({type: FULLNAME_PROFILE, fullName});
 export const setAboutMeProfile = (aboutMe: (string | number)): SetAboutMeProfileType => ({
@@ -165,37 +147,42 @@ type ProfileActionType =
 type ThunkType = ThunkAction<void, AppStateType, unknown, ProfileActionType>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ProfileActionType>
 
-export const getUserProfile = (userId: number):ThunkType => async (dispatch:ThunkDispatchType) => {
+export const getUserProfile = (userId: number): ThunkType => async (dispatch: ThunkDispatchType) => {
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };
-export const getStatus = (userId:number) => async (dispatch:ThunkDispatchType) => {
+export const getStatus = (userId: number) => async (dispatch: ThunkDispatchType) => {
     let response = await profileAPI.getStatus(userId);
     dispatch(setStatus(response.data));
 };
-export const updateStatus = (status: string) => async (dispatch:ThunkDispatchType) => {
+export const updateStatus = (status: string) => async (dispatch: ThunkDispatchType) => {
     let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
     }
 };
-export const savePhoto = (file:any) => async (dispatch:ThunkDispatchType) => {
+export const savePhoto = (file: any) => async (dispatch: ThunkDispatchType) => {
     let response = await profileAPI.savePhoto(file);
 
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
 };
-export const saveProfile = (profile:SetProfileType) => async (dispatch:ThunkDispatchType, getState:() => AppStateType)=> {
+export const saveProfile = (profile: ProfileType) => async (dispatch: ThunkDispatchType, getState: () => AppStateType) => {
     const userId = getState().auth.id;
-    const response = await profileAPI.saveProfile(profile);
-    if (response.data.resultCode === 0) {
-        dispatch(getUserProfile(userId));
+    const data = await profileAPI.saveProfile(profile);
+
+    if (data.data.resultCode === 0) {
+        if (userId != null) {
+            dispatch(getUserProfile(userId));
+        } else {
+            throw new Error("userId can't be null")
+        }
     } else {
         // @ts-ignore
         dispatch(stopSubmit("edit-profile",
-            {_error: response.data.messages[0]}));
-        return Promise.reject(response.data.messages[0]);
+            {_error: data.data.messages[0]}));
+        return Promise.reject(data.data.messages[0]);
     }
 };
 export default profileReducer;
