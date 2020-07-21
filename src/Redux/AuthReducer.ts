@@ -8,30 +8,14 @@ import {securityAPI} from "../api/security-api";
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCSESS = 'samurai-network/auth/GET_CAPTCHA_URL_SUCCSESS';
 
-type InitialStateType = {
-    id: null | number,
-    email: null | string,
-    login: null | string,
-    isFetching: boolean,
-    isAuth: boolean,
-    captchaUrl: null | string,
-    password: any,
-    rememberMe: boolean,
-}
-
-
 let initialState = {
-    id: null ,
-    email: null,
-    login: null,
-    isFetching: false,
+    userId: null as (number | null),
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false,
-    captchaUrl: null,
-    password: null,
-    rememberMe: false,
+    captchaUrl: null as string | null// if null, then captcha is not required
 };
-
-const authReducer = (state: InitialStateType = initialState, action:AuthActionType) => {
+const authReducer = (state= initialState, action:AuthActionType) => {
     switch (action.type) {
         case SET_USER_DATA:
         case GET_CAPTCHA_URL_SUCCSESS:
@@ -58,8 +42,7 @@ type SetAuthUserDataType = {
 }
 type GetCaptchaUrlSuccsessType = {
     type: typeof GET_CAPTCHA_URL_SUCCSESS,
-    payload: { captchaUrl: string }
-}
+    payload: { captchaUrl:string | null}}
 
 export const setAuthUserData = (id: null | number, email: null | string, login: null | string, isAuth: boolean): SetAuthUserDataType => (
     {type: SET_USER_DATA, payload: {id, email, login, isAuth}});
@@ -81,7 +64,7 @@ export const authMe = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     }
 };
 
-export const login = (email: null | string, password: any, rememberMe: boolean, captcha:null | string): ThunkType =>
+export const login = (email:  string, password: string, rememberMe: boolean, captcha: string | null): ThunkType =>
     async (dispatch: ThunkDispatchType) => {
         let response = await authAPI.login(email, password, rememberMe, captcha)
         if (response.data.resultCode === ResultCodeEnum.Sucsess) {
@@ -106,8 +89,8 @@ export const logout = (): ThunkType => async (dispatch: ThunkDispatchType) => {
 };
 
 export const getCaptchaUrl = (): ThunkType => async (dispatch: ThunkDispatchType) => {
-    const response = await securityAPI.getCaptchaUrl();
-    const captchaUrl = response.data.url;
+    const data  = await securityAPI.getCaptchaUrl();
+    const captchaUrl = data.url;
     dispatch(getCaptchaUrlSuccsess(captchaUrl));
 };
 export default authReducer;
