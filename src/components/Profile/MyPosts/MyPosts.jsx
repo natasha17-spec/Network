@@ -2,10 +2,10 @@ import React from 'react';
 import s from './MyPosts.module.css'
 import Posts from "./Posts/Posts";
 import {Field, reduxForm} from "redux-form";
-import {maxLenghtCreator, required} from "../../../utils/validatos/validators";
+import {maxLengthCreator, required} from "../../../utils/validatos/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 
-const maxLength10 = maxLenghtCreator(300);
+const maxLength10 = maxLengthCreator(300);
 
 
 const MyPosts=React.memo(props => {

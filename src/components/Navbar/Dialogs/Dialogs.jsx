@@ -4,11 +4,11 @@ import DialogItem from "./Dialogitem/Dialogitem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
-import {maxLenghtCreator, required} from "../../../utils/validatos/validators";
+import {maxLengthCreator, required} from "../../../utils/validatos/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 
 
-const maxLength50 = maxLenghtCreator(50);
+const maxLength50 = maxLengthCreator(50);
 const Dialogs = (props) => {
     let state= props.dialogsPage;
     let dialogsElements = state.dialogsData.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>);
