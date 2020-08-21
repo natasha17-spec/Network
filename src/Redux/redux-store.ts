@@ -25,8 +25,12 @@ let rootReducers = combineReducers(
         app:appReducer
     }
 );
+
+
 type RootReducerType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducerType>
+
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
 export default store;

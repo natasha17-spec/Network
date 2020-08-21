@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import s from './Profile.module.css';
 import Preloader from "../common/preloader/Preloader";
 import {ProfileInfoUser} from "./ProfileInfoUser";
@@ -20,7 +20,14 @@ type ProfileInfoPropsType = {
     isOwner: number
     savePhoto: (file: any) => void
 }
-const ProfileInfo:React.FC<ProfileInfoPropsType> = ({saveProfile, savePhoto, profile, status, updateStatus, isOwner,}) => {
+const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
+                                                         saveProfile,
+                                                         savePhoto,
+                                                         profile,
+                                                         status,
+                                                         updateStatus,
+                                                         isOwner,
+                                                     }) => {
 
     let [editMode, setEditMode] = useState<boolean>(false);
 
@@ -28,7 +35,7 @@ const ProfileInfo:React.FC<ProfileInfoPropsType> = ({saveProfile, savePhoto, pro
         return <Preloader/>
     }
 
-    const onMainPhotoSelected = (e:ChangeEvent) => {
+    const onMainPhotoSelected = (e:Event) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0]);
         }

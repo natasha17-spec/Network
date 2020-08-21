@@ -98,6 +98,7 @@ type ToogleFollowingProgressType = {
     isFetching: boolean,
     userId?: number
 }
+
 type UsersActionType =
     FollowSuccsessType |
     UnfollowSuccsessType |
@@ -106,14 +107,17 @@ type UsersActionType =
     SetTotalUsersCountType |
     ToogleIsFetchingType |
     ToogleFollowingProgressType
+
 //*Action creators
-export const followSuccsess = (userId: number): FollowSuccsessType => {return {type: FOLLOW, userId}};
-export const unfollowSuccsess = (userId: number): UnfollowSuccsessType => ({type: UNFOLLOW, userId});
-export const setUsers = (users: Array<UserType>): SetUsersType => ({type: SET_USERS, users});
-export const setCurrentPage = (currentPage: number): SetCurrentPageType => ({type: SET_CURRENT_PAGE, currentPage});
-export const setTotalUsersCount = (totalUsersCount: number): SetTotalUsersCountType => ({type: SET_TOTAL_USERS_COUNT,totalUsersCount});
-export const toogleIsFetching = (isFetching: boolean): ToogleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching});
-export const toogleFollowingProgress = (isFetching: boolean, userId?: number): ToogleFollowingProgressType => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
+export const actions = {
+    followSuccsess:  (userId: number): FollowSuccsessType => {return {type: FOLLOW, userId}},
+    unfollowSuccsess: (userId: number): UnfollowSuccsessType => ({type: UNFOLLOW, userId}),
+    setUsers: (users: Array<UserType>): SetUsersType => ({type: SET_USERS, users}),
+    setCurrentPage: (currentPage: number): SetCurrentPageType => ({type: SET_CURRENT_PAGE, currentPage}),
+    setTotalUsersCount: (totalUsersCount: number): SetTotalUsersCountType => ({type: SET_TOTAL_USERS_COUNT,totalUsersCount}),
+    toogleIsFetching: = (isFetching: boolean): ToogleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching}),
+    toogleFollowingProgress: = (isFetching: boolean, userId?: number): ToogleFollowingProgressType => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}),
+}
 
 //*Общий
 type ThunkType = ThunkAction<void, AppStateType, unknown, UsersActionType>
@@ -122,33 +126,33 @@ type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, UsersActionType>
 
 export const getUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch: ThunkDispatchType) => {
-        dispatch(toogleIsFetching(true));
-        dispatch(setCurrentPage(page));
+        dispatch(actions.toogleIsFetching(true));
+        dispatch(actions.setCurrentPage(page));
         let data = await usersAPI.getUsers(page, pageSize);
-        dispatch(toogleIsFetching(false));
-        dispatch(setUsers(data.items));
-        dispatch(setTotalUsersCount(data.totalCount));
+        dispatch(actions.toogleIsFetching(false));
+        dispatch(actions.setUsers(data.items));
+        dispatch(actions.setTotalUsersCount(data.totalCount));
     };
 };
 export default usersReducer;
 
 const followUnfollowFlow = async (dispatch: ThunkDispatchType, userId: number, apiMethod: any, actionCreator: (userId: number) => FollowSuccsessType | UnfollowSuccsessType) => {
-    dispatch(toogleFollowingProgress(true, userId));
+    dispatch(actions.toogleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
     if (response.resultCode === 0) {
         dispatch(actionCreator(userId));
     }
-    dispatch(toogleFollowingProgress(false, userId));
+    dispatch(actions.toogleFollowingProgress(false, userId));
 }
 
 export const follow = (userId: number): ThunkType => {
     return async (dispatch: ThunkDispatchType) => {
-        followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccsess);
+        followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), actions.followSuccsess);
     }
 }
 
 export const unfollow = (userId: number): ThunkType => {
     return async (dispatch: ThunkDispatchType) => {
-        followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccsess);
+        followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), actions.unfollowSuccsess);
     }
 }
