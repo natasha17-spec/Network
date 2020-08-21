@@ -1,6 +1,6 @@
 import {updateObjectInArray} from "../utils/objects-helper";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {AppStateType} from "./redux-store";
+import {AppStateType, InferActionsTypes} from "./redux-store";
 import {UserType} from "../types/types";
 import {usersAPI} from "../api/getUsers-api";
 
@@ -31,7 +31,7 @@ let initialState = {
     followingInProgress: [] as Array<number>
 };
 
-const usersReducer = (state: InitialStateType = initialState, action: UsersActionType) => {
+const usersReducer = (state: InitialStateType = initialState, action: ActionsType) => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -99,14 +99,7 @@ type ToogleFollowingProgressType = {
     userId?: number
 }
 
-type UsersActionType =
-    FollowSuccsessType |
-    UnfollowSuccsessType |
-    SetUsersType |
-    SetCurrentPageType |
-    SetTotalUsersCountType |
-    ToogleIsFetchingType |
-    ToogleFollowingProgressType
+type ActionsType = InferActionsTypes<typeof actions>
 
 //*Action creators
 export const actions = {
@@ -115,13 +108,13 @@ export const actions = {
     setUsers: (users: Array<UserType>): SetUsersType => ({type: SET_USERS, users}),
     setCurrentPage: (currentPage: number): SetCurrentPageType => ({type: SET_CURRENT_PAGE, currentPage}),
     setTotalUsersCount: (totalUsersCount: number): SetTotalUsersCountType => ({type: SET_TOTAL_USERS_COUNT,totalUsersCount}),
-    toogleIsFetching: = (isFetching: boolean): ToogleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching}),
-    toogleFollowingProgress: = (isFetching: boolean, userId?: number): ToogleFollowingProgressType => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}),
+    toogleIsFetching:  (isFetching: boolean): ToogleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching}),
+    toogleFollowingProgress:  (isFetching: boolean, userId?: number): ToogleFollowingProgressType => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}),
 }
 
 //*Общий
-type ThunkType = ThunkAction<void, AppStateType, unknown, UsersActionType>
-type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, UsersActionType>
+type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
+type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsType>
 
 
 export const getUsers = (page: number, pageSize: number): ThunkType => {
