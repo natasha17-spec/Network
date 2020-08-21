@@ -98,7 +98,6 @@ type ToogleFollowingProgressType = {
     isFetching: boolean,
     userId?: number
 }
-
 type ActionsType = InferActionsTypes<typeof actions>
 
 //*Action creators
