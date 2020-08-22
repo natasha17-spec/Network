@@ -35,7 +35,7 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
         return <Preloader/>
     }
 
-    const onMainPhotoSelected = (e:Event) => {
+    const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0]);
         }
