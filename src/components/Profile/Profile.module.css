@@ -111,7 +111,7 @@ textarea{
     align-items: center;
 }
 .photo div{
-    background-image: url("../../Picture/m.jpg");
+    background-image: url("../../assets/m.jpg");
     width: 100%;
     padding-bottom: 200px;
     background-repeat: no-repeat;

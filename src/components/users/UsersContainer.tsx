@@ -1,9 +1,8 @@
 import React from 'react'
 import Users from "./Users";
-import Preloader from "../components/common/preloader/Preloader";
-import {follow, getUsers, unfollow} from "../Redux/UsersReducer";
-import {UserType} from "../types/types";
-import {AppStateType} from "../Redux/redux-store";
+import Preloader from "../common/Preloader/Preloader";
+import {follow, getUsers, unfollow} from "../../redux/UsersReducer";
+import {UserType} from "../../types/types";
 import {connect} from 'react-redux'
 import {
     getCurrentPage,
@@ -12,8 +11,9 @@ import {
     getPageSize,
     getsUsers,
     getTotalUsersCount
-} from "../Redux/users-selector";
+} from "../../redux/users-selector";
 import {compose} from "redux";
+import {AppStateType} from "../../redux/redux-store";
 
 type MapStateToPropsType = {
     users: Array<UserType>,
@@ -30,7 +30,7 @@ type MapDispatchToPropsType = {
 }
 
 type OwnPropsType = {}
-type PropsType = MapDispatchToPropsType & MapStateToPropsType & OwnPropsType
+type PropsType = MapDispatchToPropsType & MapStateToPropsType
 
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount = () => {

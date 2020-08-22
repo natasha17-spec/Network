@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './URL.module.css';
+import s from './Path.module.css';
 // @ts-ignore
 import {NavLink} from "react-router-dom";
 
 
-const URL = () => {
+const Path = () => {
 
         return (
         <nav className={s.nav}>
@@ -29,4 +29,4 @@ const URL = () => {
         </nav>
 )
 };
-export default URL;
+export default Path;

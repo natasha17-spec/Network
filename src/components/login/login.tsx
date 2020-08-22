@@ -3,10 +3,10 @@ import {InjectedFormProps, reduxForm} from "redux-form";
 import {required} from "../../utils/validatos/validators";
 import {createField, GetStringKeys, Input} from "../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
-import {login} from "../../Redux/AuthReducer";
 import {Redirect} from "react-router-dom";
 import styles from "./../common/FormsControls/FormsControls.module.css"
-import {AppStateType} from "../../Redux/redux-store";
+import {AppStateType} from "../../redux/redux-store";
+import {login} from "../../redux/AuthReducer";
 
 type LoginFormOwnProps = {
     captchaUrl: string | null

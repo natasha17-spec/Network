@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import s from './Profile.module.css';
 import Preloader from "../common/preloader/Preloader";
 import {ProfileInfoUser} from "./ProfileInfoUser";
-import photo from "../../Picture/ava.jpg"
+import photo from "../../assets/ava.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
-import {SetProfileType} from "../../Redux/ProfileReducer";
+import {SetProfileType} from "../../redux/ProfileReducer";
 import {ProfileType} from "../../types/types";
 
 type ProfileInfoPropsType = {

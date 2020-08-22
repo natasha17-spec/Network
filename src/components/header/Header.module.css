@@ -5,7 +5,7 @@
     margin-bottom: 3px;
     display: flex;
     justify-content: space-between;
-    background-image: url("../../Picture/icon_mario.png");
+    background-image: url("../../assets/icon_mario.png");
     background-repeat: no-repeat;
 }
 

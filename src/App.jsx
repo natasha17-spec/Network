@@ -1,19 +1,19 @@
 import React from 'react';
 import './App.css';
-import URL from "./components/Navbar/URL/URL";
+import Path from "./components/navbar/URL/Path";
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
-import News from "./components/Navbar/News/News";
-import Music from "./components/Navbar/Music/Music";
-import Settings from "./components/Navbar/Settings/Settings";
-import UsersContainer from "./users/UsersContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/login";
+import News from "./components/navbar/News/News";
+import Music from "./components/navbar/music/Music";
+import Settings from "./components/navbar/settings/Settings";
+import UsersContainer from "./components/users/UsersContainer";
+import HeaderContainer from "./components/header/HeaderContainer";
+import Login from "./components/login/login";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./Redux/App-reducer";
+import {initializeApp} from "./redux/App-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 
-const DialogsContainer = React.lazy(() => import('./components/Navbar/Dialogs/DialogsContainer'));
+const DialogsContainer = React.lazy(() => import('./components/navbar/dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
             <div className='app-wrapper'>
                 <div className='null'></div>
                 <HeaderContainer/>
-                <URL state={this.props.state}/>
+                <Path state={this.props.state}/>
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route path='/dialogs'
