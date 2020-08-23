@@ -14,7 +14,7 @@ export type ApiResponseType<D = {},RC = ResultCodeEnum> = {
 }
 export enum ResultCodeEnum {
     Error = 1,
-    Sucsess = 0,
+    Success = 0,
 }
 
 export enum ResultCodeForCaptchaEnum {

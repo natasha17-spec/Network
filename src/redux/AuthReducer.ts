@@ -10,11 +10,13 @@ const GET_CAPTCHA_URL_SUCCSESS = 'samurai-network/auth/GET_CAPTCHA_URL_SUCCSESS'
 
 let initialState = {
     userId: null as (number | null),
+    // userId: null as (number | null),
     email: null as string | null,
     login: null as string | null,
     isAuth: false,
     captchaUrl: null as string | null// if null, then captcha is not required
 };
+type InitialState = typeof initialState
 const authReducer = (state= initialState, action:AuthActionType) => {
     switch (action.type) {
         case SET_USER_DATA:
@@ -29,20 +31,7 @@ const authReducer = (state= initialState, action:AuthActionType) => {
 };
 
 //*Action creators type
-type SetAuthUserDataActionPayloadType = {
-    id: null | number
-    email: null | string
-    login: null | string
-    isAuth: boolean
-}
 
-type SetAuthUserDataType = {
-    type: typeof SET_USER_DATA,
-    payload: SetAuthUserDataActionPayloadType
-}
-type GetCaptchaUrlSuccsessType = {
-    type: typeof GET_CAPTCHA_URL_SUCCSESS,
-    payload: { captchaUrl:string | null}}
 
 export const setAuthUserData = (id: null | number, email: null | string, login: null | string, isAuth: boolean): SetAuthUserDataType => (
     {type: SET_USER_DATA, payload: {id, email, login, isAuth}});
@@ -67,7 +56,7 @@ export const authMe = (): ThunkType => async (dispatch: ThunkDispatchType) => {
 export const login = (email:  string, password: string, rememberMe: boolean, captcha: string | null): ThunkType =>
     async (dispatch: ThunkDispatchType) => {
         let response = await authAPI.login(email, password, rememberMe, captcha)
-        if (response.data.resultCode === ResultCodeEnum.Sucsess) {
+        if (response.data.resultCode === ResultCodeEnum.Success) {
             dispatch(authMe())
         } else {
             if (response.data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
@@ -83,7 +72,7 @@ export const login = (email:  string, password: string, rememberMe: boolean, cap
 
 export const logout = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     let response = await authAPI.logout()
-    if (response.data.resultCode === ResultCodeEnum.Sucsess) {
+    if (response.data.resultCode === ResultCodeEnum.Success) {
         dispatch(setAuthUserData(null, null, null, false));
     }
 };
