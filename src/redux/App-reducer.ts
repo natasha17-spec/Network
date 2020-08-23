@@ -6,7 +6,7 @@ import {authMe} from "./AuthReducer";
 let initialState = {
     initialized: false
 };
-export type InitialStateType = typeof initialState
+ type InitialStateType = typeof initialState
 
 const appReducer = (state = initialState, action:AppActionsType):InitialStateType => {
     if (action.type === 'INITIALIZED_SUCCESS') {

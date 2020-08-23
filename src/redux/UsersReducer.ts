@@ -13,9 +13,9 @@ let initialState = {
     isFetching: false,
     followingInProgress: [] as Array<number>
 };
-type InitialState = typeof initialState
+type InitialStateType = typeof initialState
 
-const usersReducer = (state= initialState, action: ActionsTypes) => {
+const usersReducer = (state= initialState, action: ActionsTypes):InitialStateType => {
     switch (action.type) {
         case 'FOLLOW':
             return {
@@ -63,7 +63,7 @@ export const actions = {
     setCurrentPage: (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage} as const),
     setTotalUsersCount: (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount} as const),
     toogleIsFetching: (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching} as const),
-    toogleFollowingProgress: (isFetching: boolean, userId?: number) => ({
+    toogleFollowingProgress: (isFetching: boolean, userId: number) => ({
         type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
         isFetching,
         userId
@@ -86,7 +86,7 @@ export const getUsers = (page: number, pageSize: number): ThunkType => {
     };
 };
 export default usersReducer;
-''
+
 
 const followUnfollowFlow = async (dispatch: ThunkDispatchType, userId: number,
                                   apiMethod: any,
