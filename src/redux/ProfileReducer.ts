@@ -14,7 +14,7 @@ let initialState = {
     status: "",
 };
 
-const profileReducer = (state = initialState, action: ActionsType) => {
+const profileReducer = (state = initialState, action: ProfileActionsType) => {
     switch (action.type) {
         case 'ADD_POST': {
             let newPosts = {
@@ -79,9 +79,9 @@ const actions = {
 
 
 //*Общий
-type ActionsType = InferActionsTypes<typeof actions>
-type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
-type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsType>
+type ProfileActionsType = InferActionsTypes<typeof actions>
+type ThunkType = ThunkAction<void, AppStateType, unknown, ProfileActionsType>
+type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ProfileActionsType>
 
 export const getUserProfile = (userId: number): ThunkType => async (dispatch: ThunkDispatchType) => {
     let response = await usersAPI.getProfile(userId);
