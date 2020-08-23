@@ -13,7 +13,7 @@ let initialState = {
     profile: null as ProfileType | null,
     status: "",
 };
-
+ type InitialStateType = typeof initialState
 const profileReducer = (state = initialState, action: ProfileActionsType) => {
     switch (action.type) {
         case 'ADD_POST': {
@@ -105,7 +105,7 @@ export const savePhoto = (file: any) => async (dispatch: ThunkDispatchType) => {
     }
 };
 export const saveProfile = (profile: ProfileType) => async (dispatch: ThunkDispatchType, getState: () => AppStateType) => {
-    const userId = getState().auth.id;
+    const userId = getState().auth.userId;
     const data = await profileAPI.saveProfile(profile);
 
     if (data.data.resultCode === 0) {

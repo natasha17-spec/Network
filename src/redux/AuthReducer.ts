@@ -15,7 +15,7 @@ let initialState = {
     captchaUrl: null as string | null// if null, then captcha is not required
 };
 type InitialState = typeof initialState
-const authReducer = (state = initialState, action: AuthActionsType) => {
+const authReducer = (state = initialState, action: AuthActionsType):InitialState => {
     switch (action.type) {
         case 'SET_USER_DATA':
         case 'GET_CAPTCHA_URL_SUCCSESS':
