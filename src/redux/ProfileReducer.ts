@@ -12,9 +12,14 @@ let initialState = {
     ] as Array<PostType>,
     profile: null as ProfileType | null,
     status: "",
+    fullName:"",
+    aboutMe:'',
+    lookingForAJob:false,
+    lookingForAJobDescription:''
+
 };
- type InitialStateType = typeof initialState
-const profileReducer = (state = initialState, action: ProfileActionsType) => {
+type InitialStateType = typeof initialState
+const profileReducer = (state = initialState, action: ProfileActionsType): InitialStateType => {
     switch (action.type) {
         case 'ADD_POST': {
             let newPosts = {
@@ -26,7 +31,6 @@ const profileReducer = (state = initialState, action: ProfileActionsType) => {
             return {
                 ...state,
                 posts: [...state.posts, newPosts],
-                newPostText: ""
             };
         }
         case 'SET_USERS_PROFILE': {
@@ -55,7 +59,7 @@ const profileReducer = (state = initialState, action: ProfileActionsType) => {
             };
         }
         case 'SAVE_PHOTO_SUCCESS':
-            return {...state, profile: {...state.profile, photos: action.photos}};
+            return {...state, profile: {...state.profile, photos: action.photos}as ProfileType};
         default:
             return state
     }
@@ -69,7 +73,7 @@ const actions = {
     setUserProfile: (profile: null | ProfileType) => ({type: 'SET_USERS_PROFILE', profile} as const),
     setStatus: (status: string) => ({type: 'SET_STATUS', status} as const),
     setFullnameProfile: (fullName: string) => ({type: 'FULLNAME_PROFILE', fullName} as const),
-    setAboutMeProfile: (aboutMe: (string | number)) => ({type: 'ABOUT_ME_PROFILE', aboutMe} as const),
+    setAboutMeProfile: (aboutMe: (string)) => ({type: 'ABOUT_ME_PROFILE', aboutMe} as const),
     setlookingForAJobProfile: (lookingForAJob: boolean) => ({type: 'LOOKING_FOR_A_JOB', lookingForAJob} as const),
     setlookingForAJobDescriptionProfile: (lookingForAJobDescription: string) => ({
         type: 'LOOKING_FOR_A_JOB_DESCRIPTION',

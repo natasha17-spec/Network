@@ -1,6 +1,5 @@
 import {GetItemsType} from "../types/types";
 import {ApiResponseType, instance} from "./api";
-import {profileAPI} from "./profile-api";
 
 
 export const usersAPI = {
@@ -25,8 +24,8 @@ export const usersAPI = {
             })
     },
 
-    getProfile(userId: number) {
-        console.warn('Obsolete method. Please profileAPI object');
-        return profileAPI.getProfile(userId);
-    },
+    // getProfile(userId: number) {
+    //     console.warn('Obsolete method. Please profileAPI object');
+    //     return profileAPI.getProfile(userId);
+    // },
 };

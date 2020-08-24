@@ -1,7 +1,7 @@
 import {ResultCodeEnum, ResultCodeForCaptchaEnum} from "../api/api";
 import {stopSubmit} from "redux-form";
-import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {AppStateType, InferActionsTypes} from "./redux-store";
+import {ThunkDispatch} from "redux-thunk";
+import {AppStateType, BaseThunkType, InferActionsTypes} from "./redux-store";
 import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
 
@@ -38,7 +38,7 @@ const actions = {
 
 //*Общий
 type AuthActionsType = InferActionsTypes<typeof actions>
-type ThunkType = ThunkAction<void, AppStateType, unknown, AuthActionsType>
+type ThunkType = BaseThunkType<AuthActionsType>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, AuthActionsType>
 
 export const authMe = (): ThunkType => async (dispatch: ThunkDispatchType) => {

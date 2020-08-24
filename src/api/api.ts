@@ -23,4 +23,3 @@ export enum ResultCodeForCaptchaEnum {
 
 
 
-
