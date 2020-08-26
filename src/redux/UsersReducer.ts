@@ -2,7 +2,7 @@ import {updateObjectInArray} from "../utils/objects-helper";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType, InferActionsTypes} from "./redux-store";
 import {UserType} from "../types/types";
-import {usersAPI} from "../api/getUsers-api";
+import {usersAPI} from "../api/users-api";
 
 
 let initialState = {
