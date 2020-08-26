@@ -12,6 +12,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import News from "./components/navbar/n4_News/News";
 import Music from "./components/navbar/n3_Music/Music";
 import Settings from "./components/navbar/n5_Settings/Settings";
+import Path from "./components/navbar/n1_Path/Path";
 
 const DialogsContainer = React.lazy(() => import('./components/navbar/dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
