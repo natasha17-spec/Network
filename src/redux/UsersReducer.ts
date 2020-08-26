@@ -1,6 +1,6 @@
 import {updateObjectInArray} from "../utils/objects-helper";
-import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {AppStateType, InferActionsTypes} from "./redux-store";
+import {ThunkDispatch} from "redux-thunk";
+import {AppStateType, BaseThunkType, InferActionsTypes} from "./redux-store";
 import {UserType} from "../types/types";
 import {usersAPI} from "../api/users-api";
 
@@ -70,11 +70,6 @@ export const actions = {
     } as const),
 }
 
-//*Общий
-type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsTypes>
-type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsTypes>
-
-
 export const getUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch: ThunkDispatchType) => {
         dispatch(actions.toogleIsFetching(true));
@@ -85,9 +80,9 @@ export const getUsers = (page: number, pageSize: number): ThunkType => {
         dispatch(actions.setTotalUsersCount(data.totalCount));
     };
 };
+
+
 export default usersReducer;
-
-
 const followUnfollowFlow = async (dispatch: ThunkDispatchType, userId: number,
                                   apiMethod: any,
                                   actionCreator: (userId: number) => ActionsTypes) => {
@@ -98,6 +93,7 @@ const followUnfollowFlow = async (dispatch: ThunkDispatchType, userId: number,
     }
     dispatch(actions.toogleFollowingProgress(false, userId));
 }
+
 
 export const follow = (userId: number): ThunkType => {
     return async (dispatch) => {
@@ -110,3 +106,7 @@ export const unfollow = (userId: number): ThunkType => {
         followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), actions.unfollowSuccsess);
     }
 }
+
+//*Общий
+type ThunkType = BaseThunkType<ActionsTypes>
+type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsTypes>

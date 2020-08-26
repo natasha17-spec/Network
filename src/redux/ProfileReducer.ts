@@ -63,7 +63,7 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
 
 
 //*Action creators
-const actions = {
+export const actions = {
     addPostActionCreator: (newPostText: any) => ({type: 'ADD_POST', newPostText} as const),
     savePhotoSuccess: (photos: PhotosType) => ({type: 'SAVE_PHOTO_SUCCESS', photos} as const),
     setUserProfile: (profile: ProfileType) => ({type: 'SET_USERS_PROFILE', profile} as const),
