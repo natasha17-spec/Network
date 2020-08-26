@@ -38,7 +38,7 @@ const actions = {
 
 //*Общий
 type AuthActionsType = InferActionsTypes<typeof actions>
-type ThunkType = BaseThunkType<AuthActionsType>
+type ThunkType = BaseThunkType<AuthActionsType | ReturnType<typeof stopSubmit>>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, AuthActionsType>
 
 export const authMe = (): ThunkType => async (dispatch: ThunkDispatchType) => {
@@ -60,7 +60,6 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
             }
             let message = response.data.messages.length > 0 ?
                 response.data.messages[0] : "Some error";
-
             // @ts-ignore
             dispatch(stopSubmit("login", {_error: message}));
         }
