@@ -29,7 +29,7 @@ const authReducer = (state = initialState, action: AuthActionsType):InitialState
 };
 
 //*Action creators type
-const actions = {
+export const actions = {
     setAuthUserData: (id: null | number, email: null | string, login: null | string, isAuth: boolean) => (
         {type: 'SET_USER_DATA', payload: {id, email, login, isAuth}}as const),
     getCaptchaUrlSuccsess: (captchaUrl: string) => (

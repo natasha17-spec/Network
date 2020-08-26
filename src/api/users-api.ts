@@ -1,5 +1,5 @@
 import {GetItemsType} from "../types/types";
-import {ApiResponseType, instance} from "./api";
+import {APIResponseType, instance} from "./api";
 
 
 export const usersAPI = {
@@ -11,14 +11,14 @@ export const usersAPI = {
     },
 
     follow(userId: number) {
-        return instance.post<ApiResponseType>(`follow/${userId}`)
+        return instance.post<APIResponseType>(`follow/${userId}`)
             .then(response => {
                 return response.data;
             })
     },
 
     unfollow(userId: number) {
-        return instance.delete<ApiResponseType>(`follow/${userId}`)
+        return instance.delete<APIResponseType>(`follow/${userId}`)
             .then(response => {
                 return response.data;
             })

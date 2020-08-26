@@ -1,20 +1,20 @@
 import React from 'react';
 import './App.css';
-import Path from "./components/navbar/URL/Path";
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
-import News from "./components/navbar/News/News";
-import Music from "./components/navbar/music/Music";
-import Settings from "./components/navbar/settings/Settings";
+
 import UsersContainer from "./components/users/UsersContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Login from "./components/login/login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/App-reducer";
-import Preloader from "./components/common/preloader/Preloader";
+import Preloader from "./components/common/Preloader/Preloader";
+import News from "./components/navbar/n4_News/News";
+import Music from "./components/navbar/n3_Music/Music";
+import Settings from "./components/navbar/n5_Settings/Settings";
 
 const DialogsContainer = React.lazy(() => import('./components/navbar/dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
 
 class App extends React.Component {
 
