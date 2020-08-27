@@ -26,4 +26,4 @@ class HeaderContainer extends React.Component<PropsType> {
     login: state.auth.login
     });
 
-export default connect<MapStateToPropsType,MapDispatchToPropsType,null,AppStateType> (mapStateToProps, {setAuthUserData:actions.setAuthUserData,logout}) (HeaderContainer);
+export default connect (mapStateToProps, {setAuthUserData:actions.setAuthUserData,logout}) (HeaderContainer);
