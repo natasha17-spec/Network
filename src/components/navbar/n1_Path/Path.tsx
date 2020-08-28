@@ -1,11 +1,9 @@
 import React from 'react';
 import s from './Path.module.css';
-// @ts-ignore
 import {NavLink} from "react-router-dom";
 
 
 const Path = () => {
-
         return (
         <nav className={s.nav}>
             <div className={`${s.item} ${s.active}`}>
