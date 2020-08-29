@@ -3,7 +3,7 @@ import p from './Dialogs.module.css'
 import DialogItem from "./Dialogitem/Dialogitem";
 import Message from "./Message/Message";
 import {InitialStateType} from "../../../redux/DialogsReducer";
-import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 type PropsType = {
     dialogsPage:InitialStateType
@@ -28,6 +28,8 @@ const Dialogs:React.FC<PropsType> = (props) => {
     };
 
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div className={p.dialogs}>
             <div className={p.dialogsItems}>
@@ -35,7 +37,7 @@ const Dialogs:React.FC<PropsType> = (props) => {
             </div>
             <div className={p.messages}>
                 <div>{messagesElements}</div>
-
+                // @ts-ignore
                     <AddMessageForm onSubmit={addNewMessage}/>
             </div>
         </div>
