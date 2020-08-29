@@ -5,25 +5,29 @@
     width: 250px;
     height: 250px;
 }
-.formSummaryError{
+
+.formSummaryError {
     border: 1px solid red;
     color: red;
 }
-.decoreInput{
+
+.decoreInput {
     font-family: 'Oswald', sans-serif;
     font-size: 13px;
     background-color: #a4c1e9;
 }
+
 .nameStatus {
     display: flex;
     justify-content: center;
     width: 265px;
     font-size: 18px;
-    font-family: "Marck Script",sans-serif;
+    font-family: "Marck Script", sans-serif;
     text-align: center;
     margin-top: 20px;
 }
-textarea{
+
+textarea {
     width: 50px;
     height: auto;
 }
@@ -32,9 +36,11 @@ textarea{
     display: flex;
     justify-content: center;
 }
+
 .container {
     padding: 20px;
 }
+
 .data_users {
     display: block;
     height: 300px;
@@ -68,14 +74,17 @@ textarea{
 .fullname {
     width: 70%;
 }
+
 .contactsForm {
     margin-left: 80px;
 }
+
 .name {
     margin-right: 20px;
     font-weight: bold;
     width: 95px;
 }
+
 .status {
     display: flex;
     width: 250px;
@@ -86,17 +95,21 @@ textarea{
     font-family: 'Pacifico', cursive;
     margin-top: 20px;
 }
-.contactContainer{
+
+.contactContainer {
     margin-left: 15px;
 
 }
+
 .decoreContacts {
     color: #F137A6;
     text-decoration: underline;
 }
-.contacts{
+
+.contacts {
     margin-left: 30px;
 }
+
 .listAboutUsers {
     display: flex;
     flex-direction: column;
@@ -110,8 +123,9 @@ textarea{
     justify-content: center;
     align-items: center;
 }
-.photo div{
-    background-image: url("../../assets/m.jpg");
+
+.photo div {
+    background-image: url("../../assets/m.png");
     width: 100%;
     padding-bottom: 200px;
     background-repeat: no-repeat;
