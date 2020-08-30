@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../App.css"
-import userPhoto from "../assets/images.png";
+import userPhoto from "../../assets/images.png";
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../types/types";
 
@@ -15,6 +15,7 @@ type PropsType = {
 
 let User:React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
 
+
     return (
         <div className="allUsers">
             <div className='nickUsers'>
@@ -26,17 +27,10 @@ let User:React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) =
                 </div>
                 <div>
                     {user.followed
-                        ? <button disabled={followingInProgress}
-                                  onClick={() => {
-                                      unfollow(user.id)
-
-                                  }} className='buttonUnFollow'>UnFollow</button>
-
-
-                        : <button disabled={followingInProgress} onClick={() => {
-                            follow(user.id)
-                        }}
-                                  className='buttonFollow'>Follow</button>
+                        // @ts-ignore
+                        ? <button disabled={followingInProgress} onClick={() => {unfollow(user.id)}} className='buttonUnFollow'>UnFollow</button>
+                        // @ts-ignore
+                        : <button disabled={followingInProgress} onClick={() => {follow(user.id)}} className='buttonFollow'>Follow</button>
                     }
                 </div>
             </div>
