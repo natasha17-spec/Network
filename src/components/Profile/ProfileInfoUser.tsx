@@ -1,11 +1,8 @@
 import React from 'react';
 import s from './Profile.module.css';
 
-type ProfilePropsType = {
-    text:''
-    dataUser
-}
-export const ProfileInfoUser:React.FC<ProfilePropsType> = ({text = "", dataUser}) => {
+
+export const ProfileInfoUser = (text='',dataUser:any ) => {
 
     return (
         <div className={s.user}>
