@@ -7,7 +7,6 @@ import Login from "./components/login/login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/App-reducer";
-import Preloader from "./components/common/Preloader/Preloader";
 import News from "./components/navbar/n4_News/News";
 import Music from "./components/navbar/n3_Music/Music";
 import Settings from "./components/navbar/n5_Settings/Settings";
@@ -15,9 +14,10 @@ import Path from "./components/navbar/n1_Path/Path";
 import {AppStateType} from "./redux/redux-store";
 import HeaderContainer from "./components/header/HeaderContainer";
 import {withSuspense} from "./hoc/withSuspense";
+import Preloader from "./components/common/preloader/Preloader";
 
 const DialogsContainer = React.lazy(() => import('./components/navbar/n2_Dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
     initializeApp: () => void
