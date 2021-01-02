@@ -50,6 +50,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             <div className='app-wrapper'>
                 <div className='null'></div>
                 <HeaderContainer/>
+
+
                 <Path/>
                 <div className='app-wrapper-content'>
                     <Switch>
