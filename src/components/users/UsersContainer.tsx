@@ -1,6 +1,6 @@
 import React from 'react'
 import Users from "./Users";
-import {follow, getUsers, unfollow} from "../../redux/UsersReducer";
+import {follow, requestUsers, unfollow} from "../../redux/UsersReducer";
 import {UserType} from "../../types/types";
 import {connect} from 'react-redux'
 import {
@@ -73,5 +73,5 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export default compose(connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>(mapStateToProps,
     {
         follow, unfollow,
-        getUsers
+       getUsers: requestUsers
     }))(UsersContainer)

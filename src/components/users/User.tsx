@@ -27,11 +27,18 @@ let User:React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) =
                 </div>
                 <div>
                     {user.followed
-                        // @ts-ignore
-                        ? <button disabled={followingInProgress} onClick={() => {unfollow(user.id)}} className='buttonUnFollow'>UnFollow</button>
-                        // @ts-ignore
-                        : <button disabled={followingInProgress} onClick={() => {follow(user.id)}} className='buttonFollow'>Follow</button>
-                    }
+                        ? <button disabled={followingInProgress
+                            .some(id => id === user.id)}
+                                  onClick={() => {
+                                      unfollow(user.id)
+                                  }}>
+                            Unfollow</button>
+                        : <button disabled={followingInProgress.some(id => id === user.id)}
+                                  onClick={() => {
+                                      follow(user.id)
+                                  }}>
+                            Follow</button>}
+
                 </div>
             </div>
             <div className='statusUsers'>
