@@ -46,18 +46,19 @@ beforeEach(() => {
         currentPage: 1,
         isFetching: false,
         followingInProgress: [],
-        filter:{
-            term: ''
+        filter: {
+            term: '',
+            friend: null as null | boolean
         }
     }
 })
 test('follow user', () => {
-    let follow = usersReducer(state,actions.followSuccess(2))
+    let follow = usersReducer(state, actions.followSuccess(2))
     expect(follow.users[0].followed).toBeFalsy()
     expect(follow.users[2].followed).toBeTruthy()
 })
 test('unfollow user', () => {
-    let follow = usersReducer(state,actions.unfollowSuccess(3))
+    let follow = usersReducer(state, actions.unfollowSuccess(3))
     expect(follow.users[1].followed).toBeFalsy()
     expect(follow.users[3].followed).toBeFalsy()
 })

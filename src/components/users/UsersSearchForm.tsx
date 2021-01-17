@@ -1,4 +1,4 @@
-import {ErrorMessage, Field, Form, Formik} from "formik";
+import {Field, Form, Formik} from "formik";
 import React from "react";
 import {FilterType} from "../../redux/UsersReducer";
 
@@ -11,8 +11,9 @@ const usersSearchFormValidate = (values: any) => {
     return errors;
 }
 
-export const UsersSearchForm:React.FC<PropsType> = React.memo((props) => {
+export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     const submit = (values: FilterType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
+        debugger
         props.onFilterChanged(values)
         setSubmitting(false)
     }
@@ -20,18 +21,23 @@ export const UsersSearchForm:React.FC<PropsType> = React.memo((props) => {
     return (
         <div>
             <Formik
-                initialValues={{term: ''}}
+                initialValues={{term: '',friend:null}}
                 validate={usersSearchFormValidate}
                 onSubmit={submit}
             >
                 {({isSubmitting}) => (
                     <Form>
                         <Field type="text" name="term"/>
-                        <ErrorMessage name="term" component="div"/>
+                        <Field name="friend" as="select">
+                            <option value="null">All</option>
+                            <option value="true">Follow</option>
+                            <option value="false">Unfollow</option>
+                        </Field>
 
                         <button type="submit" disabled={isSubmitting}>
                             Find
                         </button>
+
                     </Form>
                 )}
             </Formik>

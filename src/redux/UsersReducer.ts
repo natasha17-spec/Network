@@ -11,14 +11,15 @@ export let initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: [] as Array<number>, //array of users ids
-    filter:{
-        term:''
+    filter: {
+        term: '',
+        friend: null as null | boolean
     }
 }
 
 const usersReducer = (state = initialState, action: ActionsTypes): InitialState => {
     switch (action.type) {
-        case 'SN/USERS/FOLLOW':
+        case     'SN/USERS/FOLLOW':
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
@@ -62,7 +63,7 @@ export const actions = {
     unfollowSuccess: (userId: number) => ({type: 'SN/USERS/UNFOLLOW', userId} as const),
     setUsers: (users: Array<UserType>) => ({type: 'SN/USERS/SET_USERS', users} as const),
     setCurrentPage: (currentPage: number) => ({type: 'SN/USERS/SET_CURRENT_PAGE', currentPage} as const),
-    setFilter: (term: string) => ({type: 'SN/USERS/SET_FILTER', payload:{term}} as const),
+    setFilter: (filter: FilterType) => ({type: 'SN/USERS/SET_FILTER', payload: filter} as const),
     setTotalUsersCount: (totalUsersCount: number) => ({
         type: 'SN/USERS/SET_TOTAL_USERS_COUNT',
         count: totalUsersCount
@@ -79,13 +80,13 @@ export const actions = {
 }
 
 export const requestUsers = (page: number,
-                             pageSize: number, term: string): ThunkType => {
+                             pageSize: number, filter: FilterType): ThunkType => {
     return async (dispatch, getState) => {
         dispatch(actions.toggleIsFetching(true))
         dispatch(actions.setCurrentPage(page))
-        dispatch(actions.setFilter(term))
+        dispatch(actions.setFilter(filter))
 
-        let data = await usersAPI.getUsers(page, pageSize, term)
+        let data = await usersAPI.getUsers(page, pageSize, filter.term,filter.friend)
         dispatch(actions.toggleIsFetching(false))
         dispatch(actions.setUsers(data.items))
         dispatch(actions.setTotalUsersCount(data.totalCount))
