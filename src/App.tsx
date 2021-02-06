@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 
-import UsersContainer from "./components/users/UsersContainer";
 import Login from "./components/login/login";
 import {connect} from "react-redux";
 import {compose} from "redux";
@@ -15,6 +14,7 @@ import {AppStateType} from "./redux/redux-store";
 import HeaderContainer from "./components/header/HeaderContainer";
 import {withSuspense} from "./hoc/withSuspense";
 import Preloader from "./components/common/preloader/Preloader";
+import {UsersPage} from "./components/users/UsersPage";
 
 const DialogsContainer = React.lazy(() => import('./components/navbar/n2_Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -63,7 +63,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={() => <Music/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
-                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/users' render={() => <UsersPage/>}/>
                         <Route path='/login' render={() => <Login/>}/>
                         <Route path='*' render={() => <div>404 not found</div>}/>
                     </Switch>
