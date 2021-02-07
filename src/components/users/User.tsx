@@ -14,8 +14,6 @@ type PropsType = {
 
 
 let User:React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
-
-
     return (
         <div className="allUsers">
             <div className='nickUsers'>

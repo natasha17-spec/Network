@@ -23,6 +23,7 @@ type PathParamsType = {
 
 type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>;
 
+
 class ProfileContainer extends React.Component<PropsType> {
     constructor(props: PropsType) {
         super(props);
@@ -56,8 +57,7 @@ class ProfileContainer extends React.Component<PropsType> {
         }
     }
 
-    componentWillUnmount(): void {
-    }
+
 
     render() {
         return (

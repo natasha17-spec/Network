@@ -5,6 +5,7 @@ import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm";
 import {FilterType, requestUsers} from "../../redux/UsersReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from 'react-router-dom'
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -13,11 +14,10 @@ import {
     getTotalUsersCount,
     getUsersFilter
 } from "../../redux/users-selector";
+import * as queryString from "querystring";
 
-type PropsType = {}
 
-
-export const Users: React.FC<PropsType> = (props) => {
+export const Users: React.FC = () => {
 
     const currentPage = useSelector(getCurrentPage)
     const totalUsersCount = useSelector(getTotalUsersCount)
@@ -40,9 +40,43 @@ export const Users: React.FC<PropsType> = (props) => {
     const unfollow = (userId: number) => {
         dispatch(unfollow(userId))
     }
+    const history = useHistory()
+
+
+
+
+    useEffect(() => {
+        const parsed = queryString.parse(history.location.search.substr(1))
+
+        let actualPage = currentPage
+        let actualFilter = filter
+
+        if (!!parsed.page) actualPage = Number(parsed.page)
+
+
+        if (!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string}
+
+        switch(parsed.friend) {
+            case "null":
+                actualFilter = {...actualFilter, friend: null}
+                break;
+            case "true":
+                actualFilter = {...actualFilter, friend: true}
+                break;
+            case "false":
+                actualFilter = {...actualFilter, friend: false}
+                break;
+        }
+
+        dispatch(requestUsers(actualPage, pageSize, actualFilter))
+    }, [])
+
     useEffect(()=>{
-        dispatch(requestUsers(currentPage,pageSize,filter))
-    },[])
+        history.push({
+            pathname:'/users',
+            search:`?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
+        })
+    },[filter,currentPage])
 
     return <div className={s.container}>
         <UsersSearchForm onFilterChanged={onFilterChanged}/>
