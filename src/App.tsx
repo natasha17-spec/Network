@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
-import {Link, NavLink, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {Link, Redirect, Route, Switch, withRouter} from "react-router-dom";
 
 import {Login} from "./components/login/login";
 import {connect} from "react-redux";
@@ -16,7 +16,7 @@ import Preloader from "./components/common/preloader/Preloader";
 import {UsersPage} from "./components/users/UsersPage";
 import {Breadcrumb, Button, Layout, Menu} from "antd";
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
-import s from "./components/navbar/n1_Path/Path.module.css";
+import Header from "./components/header/Header";
 
 
 const DialogsContainer = React.lazy(() => import('./components/navbar/n2_Dialogs/DialogsContainer'));
@@ -47,16 +47,11 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             return <Preloader/>
         }
         const {SubMenu} = Menu;
-        const {Header, Content, Footer, Sider} = Layout;
+        const {Content, Footer, Sider} = Layout;
         return (
 
             <Layout>
-                <Header className="header">
-                    <div className="logo"/>
-                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                        <Menu.Item key="1"><Link to="/users"> Developers</Link></Menu.Item>
-                    </Menu>
-                </Header>
+               <Header/>
                 <Content style={{padding: '0 50px'}}>
                     <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -72,16 +67,11 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                                 style={{height: '100%'}}
                             >
                                 <SubMenu key="sub1" icon={<UserOutlined/>} title="My Profile">
-                                    <Menu.Item key="1">
-                                        <Link to="/profile">Profile</Link>
-                                    </Menu.Item>
-                                    <Menu.Item key="2">
-                                        <Link to="/dialogs">Messages</Link>
-                                    </Menu.Item>
+                                    <Menu.Item key="1"><Link to="/profile">Profile</Link></Menu.Item>
+                                    <Menu.Item key="2"><Link to="/dialogs">Messages</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub2" icon={<LaptopOutlined/>} title="Developer">
-                                    <Menu.Item key="5">
-                                        <Link to="/users"> Users</Link></Menu.Item>
+                                    <Menu.Item key="5"><Link to="/users"> Users</Link></Menu.Item>
                                     <Menu.Item key="6">option6</Menu.Item>
                                     <Menu.Item key="7">option7</Menu.Item>
                                     <Menu.Item key="8">option8</Menu.Item>

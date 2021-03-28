@@ -25,3 +25,7 @@
     background-color: #a4c1e9;
     box-shadow: #265171;
 }
+.login {
+    color:white;
+    display:flex;
+}

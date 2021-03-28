@@ -1,27 +1,57 @@
 import React from 'react';
 import s from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import {Button, Col, Layout, Menu, Row} from "antd";
+import Avatar from "antd/lib/avatar/avatar";
+import {useDispatch, useSelector} from "react-redux";
+import {selectIsAuth, selectIsLogin} from "../../redux/auth-selector";
+import {logout} from "../../redux/AuthReducer";
 
 
-type OwnPropsType = {
-    isAuth:boolean,
-    login:string|null,
-    logout:()=>void,
-    setAuthUserData:(id: null | number, email: null | string, login: null | string, isAuth: boolean)=>void
-}
+
+const Header: React.FC = () => {
+    const isAuth = useSelector(selectIsAuth)
+    const login = useSelector(selectIsLogin)
+    const dispatch = useDispatch()
 
 
-const Header:React.FC<OwnPropsType> = (props) => {
 
-    return <header className={s.header}>
-            <div> </div>
-        <div className={s.loginBlock}>
-            {props.isAuth
-                ?<div className={s.login}> {props.login} - <button onClick={props.logout}
-                                               className={s.logOut}>Log out
-                </button></div>
-                : <NavLink to={'/login'}>Login</NavLink>}
-        </div>
-        </header>
+
+    const logoutCallBack = ()=>{
+        dispatch(logout())
+    }
+    const {Header} = Layout;
+    return <Header className="header">
+        <div className="logo"/>
+        <Row>
+            <Col span={8}>
+                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} className="header_main">
+                    <Menu.Item key="1"><Link to="/users"> Developers</Link></Menu.Item>
+                </Menu>
+            </Col>
+            <Col span={16}>
+                <Row>
+                    <Col span={24} style={{display: 'flex',justifyContent: 'flex-end'}}>
+                        {isAuth
+                            ?
+                            <div className={s.login}>
+                                <Col span={10}><Avatar alt={login || ''}
+                                                       src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/></Col>
+                                <Col span={14}><Button type="primary" onClick={logoutCallBack}>Log out</Button></Col>
+                            </div>
+                            :
+                            <Col>
+                                <div>
+                                    <Avatar>U</Avatar>
+                                    <NavLink to={'/login'}>Login</NavLink>
+                                </div>
+                            </Col>
+                        }
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
+    </Header>
+
 };
 export default Header;
