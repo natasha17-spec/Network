@@ -61,6 +61,7 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
                                 <Button onChange={onMainPhotoSelected} icon={<UploadOutlined/>}>Upload</Button>
                             </Upload>
                             }
+
                         </div>
                         <Card title="Учи матчасть!" bordered={false} style={{ width: 300 }}>
 
