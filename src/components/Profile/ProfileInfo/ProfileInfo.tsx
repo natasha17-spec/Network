@@ -11,7 +11,7 @@ import ProfileDataForm from "./ProfileDataForm";
 import {ContactsType, ProfileType} from '../../../types/types';
 import Preloader from "../../common/preloader/Preloader";
 import Avatar from "antd/lib/avatar/avatar";
-import {Button, Col} from "antd";
+import {Button, Card, Col} from "antd";
 import Input from "antd/lib/input";
 import Upload from "antd/lib/upload";
 
@@ -62,12 +62,16 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
                             </Upload>
                             }
                         </div>
-                        {/*<Card title="Card title" bordered={false} style={{ width: 300 }}>*/}
-                        {/*    <p>Card content</p>*/}
-                        {/*    <p>Card content</p>*/}
-                        {/*    <p>Card content</p>*/}
-                        {/*</Card>*/}
-                        <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                        <Card title="Учи матчасть!" bordered={false} style={{ width: 300 }}>
+
+                            <p>-не повторяй, а пиши сам</p>
+                            <p>-копируя код со Stack Overflow - разбери его и пойми, что вообще там происходит </p>
+                            <p>-добавляй key в map</p>
+                            <p>-смотри иногда в консоль</p>
+                            <p>-страдай, пока не будешь знать матчасть</p>
+                            <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                        </Card>
+
                     </div>
                 </Col>
 
