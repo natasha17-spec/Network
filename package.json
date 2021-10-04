@@ -13,7 +13,6 @@
     "@types/redux-form": "^8.3.1",
     "antd": "^4.12.2",
     "axios": "^0.21.1",
-    "classnames": "^2.2.6",
     "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-audio-player": "^0.14.0",
@@ -51,7 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.3.1",
     "babel-plugin-inline-react-svg": "^1.1.1",
+    "classnames": "^2.3.1",
     "gh-pages": "^2.2.0",
     "jquery": "^3.4.1"
   }

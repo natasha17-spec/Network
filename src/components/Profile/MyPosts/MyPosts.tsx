@@ -1,8 +1,11 @@
 import React from 'react';
 import s from './MyPosts.module.css';
+import Post from './Post/Post';
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {Textarea} from "../../common/FormsControls/FormsControls";
+import AddPostForm, {AddPostFormValuesType} from './AddPostForm/AddPostForm';
 import {PostType} from '../../../types/types';
-import AddPostForm, {AddPostFormValuesType} from "./AddPostForm/AddPostForm";
-import Post from "./Post/Post";
 
 
 export type MapPropsType = {
@@ -12,7 +15,7 @@ export type DispatchPropsType = {
     addPost: (newPostText: string) => void
 }
 
-export const MyPosts: React.FC<MapPropsType & DispatchPropsType> = props => {
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = props => {
     let postsElements =
         [...props.posts]
             .reverse()

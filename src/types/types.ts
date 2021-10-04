@@ -1,3 +1,8 @@
+export type PostType = {
+    id: number
+    message: string
+    likesCount: number
+}
 export type ContactsType = {
     github: string
     vk: string
@@ -9,8 +14,8 @@ export type ContactsType = {
     mainLink: string
 }
 export type PhotosType = {
-    small: null | string
-    large: null | string
+    small: string | null
+    large: string | null
 }
 export type ProfileType = {
     userId: number
@@ -21,21 +26,11 @@ export type ProfileType = {
     photos: PhotosType
     aboutMe: string
 }
+
 export type UserType = {
     id: number
     name: string
     status: string
     photos: PhotosType
     followed: boolean
-}
-export type GetItemsType = {
-    items: Array<UserType>
-    totalCount: number
-    error: string | null
-}
-
-export  type PostType = {
-    id: number,
-    message: string,
-    likesCount: number
 }

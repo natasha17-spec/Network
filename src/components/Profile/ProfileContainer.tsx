@@ -1,12 +1,11 @@
 import React from 'react';
+import Profile from "./Profile";
 import {connect} from "react-redux";
+import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
 import {withRouter, RouteComponentProps} from "react-router-dom";
 import {compose} from "redux";
 import {AppStateType} from '../../redux/redux-store';
 import {ProfileType} from '../../types/types';
-// @ts-ignore
-import Profile from "./Profile";
-import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/ProfileReducer";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -22,7 +21,6 @@ type PathParamsType = {
 }
 
 type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>;
-
 
 class ProfileContainer extends React.Component<PropsType> {
     constructor(props: PropsType) {
@@ -57,7 +55,8 @@ class ProfileContainer extends React.Component<PropsType> {
         }
     }
 
-
+    componentWillUnmount(): void {
+    }
 
     render() {
         return (

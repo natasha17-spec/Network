@@ -1,8 +1,8 @@
 import React from 'react';
+import {actions} from "../../../redux/profile-reducer";
+import MyPosts, {DispatchPropsType, MapPropsType} from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from '../../../redux/redux-store';
-import {DispatchPropsType, MapPropsType,MyPosts} from "./MyPosts";
-import {actions} from "../../../redux/ProfileReducer";
 
 const mapStateToProps = (state: AppStateType) => {
     return {
